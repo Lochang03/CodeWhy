@@ -147,3 +147,12 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# --- CodeWhy additions: append these lines to the Node .gitignore GitHub created ---
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# raw downloaded repo history (large). data/sample/ stays committed.
+data/raw/
