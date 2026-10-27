@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeWhy</title>
+<style>
+  :root { --bg:#ffffff; --text:#1a1a1a; --muted:#666; --card:#f5f6f8; --line:#d9dce1; --accent:#2457d6;
+          --verified:#1e7a3c; --inferred:#9a6200; --unknown:#666; --heuristic:#6b3fa0; --warn:#b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14161a; --text:#e8e8e8; --muted:#9aa0a6; --card:#1e2127; --line:#343942; --accent:#6c93ff;
+            --verified:#5ac47c; --inferred:#e0a93b; --unknown:#9aa0a6; --heuristic:#b794f4; --warn:#f28b82; }
+  }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui, Arial, sans-serif; line-height:1.5; }
+  main { max-width:760px; margin:0 auto; padding:24px 16px 60px; }
+  h1 { margin:0 0 8px; font-size:26px; }
+  h2 { font-size:16px; margin:24px 0 8px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  .banner { background:#fff3cd; color:#5c4400; border:1px solid #e6cf7a; padding:8px 12px; border-radius:8px; font-size:14px; margin-bottom:16px; }
+  .nav { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 16px; }
+  .nav button { font:inherit; padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
+  .nav button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
+  .nav button.demo { font-size:13px; color:var(--muted); border-style:dashed; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+  .badge { display:inline-block; font-size:12px; font-weight:600; padding:1px 8px; border-radius:999px; border:1.5px solid currentColor; margin-right:8px; }
+  .verified { color:var(--verified); }
+  .inferred { color:var(--inferred); border-style:dashed; }
+  .unknown { color:var(--unknown); border-style:dotted; }
+  .heuristic { color:var(--heuristic); border-style:double; }
+  .refs a { font-size:13px; margin-left:4px; }
+  .muted { color:var(--muted); font-size:14px; }
+  .abstain { border:2px solid var(--warn); color:var(--warn); font-weight:600; font-size:18px; }
+  .drift { border:2px solid var(--heuristic); }
+  .drift .title { font-size:18px; font-weight:700; color:var(--heuristic); margin-bottom:6px; }
+  .tl { border-left:3px solid var(--line); margin-left:6px; padding-left:14px; }
+  .tl .when { font-weight:600; }
+  pre { background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px; overflow-x:auto; font-size:13px; margin:6px 0 0; }
+  a { color:inherit; }
+  ul { padding-left:0; list-style:none; margin:0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>CodeWhy</h1>
+  <div id="banner"></div>
+  <div id="nav" class="nav"></div>
+  <div id="app">Loading...</div>
+</main>
+
+<script>
+const DATA_URL = 'sample.json';
+const MODES = [
+  { key: 'why',          label: 'Why is it like this?' },
+  { key: 'history',      label: 'How did it change?' },
+  { key: 'still_needed', label: 'Is it still needed?' },
+  { key: 'dna',          label: 'Code DNA' },
+];
+const DEMO_NO_EVIDENCE = { key: 'insufficient_evidence', label: 'Demo: no evidence' };
+const EVENT_NAMES = {
+  original_change: 'Original change', discussion: 'Discussion', later_change: 'Later change',
+  revert: 'Revert', supersession: 'Superseded',
+};
+
+const app = document.getElementById('app');
+const banner = document.getElementById('banner');
+const nav = document.getElementById('nav');
+let DATA = null;
+
+// ---------- small helpers ----------
+function el(tag, cls, text) {              // safe: text is never treated as HTML
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text !== undefined && text !== null) e.textContent = text;
+  return e;
+}
+function section(title) { app.appendChild(el('h2', null, title)); }
+function safeUrl(u) { return typeof u === 'string' && /^https?:\/\//.test(u) ? u : null; }
+function badge(label) {
+  const l = ['verified', 'inferred', 'unknown', 'heuristic'].includes(label) ? label : 'unknown';
+  return el('span', 'badge ' + l, l);
+}
+function refs(ids, byId) {                 // [ev1] [ev2] links
+  const s = el('span', 'refs');
+  (ids || []).forEach(id => {
+    const ev = byId[id];
+    const url = ev && safeUrl(ev.url);
+    if (url) {
+      const a = el('a', null, '[' + id + ']');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      s.appendChild(a);
+    } else {
+      s.appendChild(el('span', 'muted', ' [' + id + ']'));
+    }
+  });
+  return s;
+}
+
+// ---------- reusable sections ----------
+function showAnswer(r, byId) {
+  if (!r.answer || (Array.isArray(r.answer) && !r.answer.length)) return;
+  section('Answer');
+  const answers = Array.isArray(r.answer) ? r.answer : [{ text: r.answer, label: 'unknown', evidence_ids: [] }];
+  answers.forEach(a => {
+    const card = el('div', 'card');
+    card.appendChild(badge(a.label));
+    card.appendChild(el('span', null, a.text));
+    card.appendChild(refs(a.evidence_ids, byId));
+    app.appendChild(card);
+  });
+}
+function showConfidence(r) {
+  if (!r.confidence) return;
+  section('Confidence');
+  const b = r.confidence.basis;
+  let t = '';
+  if (Array.isArray(b)) t = b.join('; ');
+  else if (b) t = b.verified_links + ' verified links, ' + b.inferred_links + ' inferred links, ' + b.distinct_sources + ' sources';
+  app.appendChild(el('div', 'card', 'Level: ' + r.confidence.level + (t ? ' (' + t + ')' : '')));
+}
+function showDecision(r) {
+  if (!r.decision) return;
+  section('Decision');
+  let t = r.decision.summary + ' (' + r.decision.date + ', status: ' + r.decision.status + ')';
+  if (r.decision.superseded_by) t += '. Superseded by: ' + (r.decision.superseded_by.summary || '');
+  app.appendChild(el('div', 'card', t));
+}
+function showWho(r) {
+  const who = r.who_to_ask || r.person_to_ask;
+  if (!who) return;
+  section('Who to ask');
+  let t = who.login + (who.reason ? ': ' + who.reason : '');
+  t += who.still_active === false ? ' (not active recently)' : who.still_active ? ' (active)' : '';
+  app.appendChild(el('div', 'card', t));
+}
+function showSnippet(r) {
+  if (!r.code_snippet) return;
+  section('Code');
+  const c = el('div', 'card');
+  c.appendChild(el('div', 'muted', r.code_snippet.path + ' · lines ' + r.code_snippet.start_line + '-' + r.code_snippet.end_line + ' · ' + (r.code_snippet.note || '')));
+  c.appendChild(el('pre', null, r.code_snippet.text));
+  app.appendChild(c);
+}
+function showSources(r) {
+  if (!(r.evidence || []).length) return;
+  section('Sources');
+  const ul = el('ul');
+  r.evidence.forEach(ev => {
+    const li = el('li', 'card');
+    li.appendChild(badge(ev.evidence_type));
+    const url = safeUrl(ev.url);
+    if (url) {
+      const a = el('a', null, '[' + ev.id + '] ' + ev.title);
+      a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      li.appendChild(a);
+    } else {
+      li.appendChild(el('span', null, '[' + ev.id + '] ' + ev.title));
+    }
+    li.appendChild(el('div', 'muted', ev.type + ' · ' + ev.date + (ev.author ? ' · ' + ev.author : '')));
+    ul.appendChild(li);
+  });
+  app.appendChild(ul);
+}
+function showConnected(r) {
+  if (!(r.connected_items || []).length) return;
+  section('Connected items');
+  const ul = el('ul');
+  r.connected_items.forEach(c => {
+    const li = el('li', 'card');
+    li.appendChild(badge(c.evidence_type));
+    li.appendChild(el('span', null, c.label + ' (' + c.edge_type + ')'));
+    ul.appendChild(li);
+  });
+  app.appendChild(ul);
+  app.appendChild(el('p', 'muted', r.connected_note || 'Based on repo history only, not a prediction.'));
+}
+function showLimitations(r) {
+  if (!(r.limitations || []).length) return;
+  section('Limitations');
+  app.appendChild(el('p', 'muted', r.limitations.join(' · ')));
+}
+
+// ---------- mode-specific sections ----------
+function showTimeline(r, byId) {
+  if (!(r.timeline || []).length) return;
+  section('Timeline');
+  const wrap = el('div', 'tl');
+  r.timeline.forEach(t => {
+    const card = el('div', 'card');
+    const head = el('div');
+    head.appendChild(badge(t.evidence_type));
+    head.appendChild(el('span', 'when', t.date + ' · ' + (EVENT_NAMES[t.event] || t.event)));
+    card.appendChild(head);
+    const body = el('div', null, t.text);
+    body.appendChild(refs(t.evidence_ids, byId));
+    card.appendChild(body);
+    wrap.appendChild(card);
+  });
+  app.appendChild(wrap);
+}
+function showDrift(r, byId) {
+  section('Drift check');
+  const d = r.drift_alert;
+  if (!d) { app.appendChild(el('div', 'card', 'No drift flagged for this item.')); return; }
+  const card = el('div', 'card drift');
+  card.appendChild(el('div', 'title', d.label || 'Possibly outdated. Verify.'));
+  card.appendChild(badge('heuristic'));
+  card.appendChild(el('span', 'muted', 'Heuristic, not a verified fact'));
+
+  const orig = el('div'); orig.appendChild(el('strong', null, 'Original reason: ')); orig.appendChild(refs(d.original_reason_evidence, byId));
+  const later = el('div'); later.appendChild(el('strong', null, 'Later change: ')); later.appendChild(refs(d.later_change_evidence, byId));
+  card.appendChild(orig); card.appendChild(later);
+
+  if (d.workaround_still_in_code) {
+    const w = d.workaround_still_in_code;
+    card.appendChild(el('div', null, 'Workaround still in code: ' + (w.checked ? 'checked. ' : 'not checked. ') + (w.path || '') + ' ' + (w.note || '')));
+  }
+  if ((d.needs_human_verification || []).length) {
+    card.appendChild(el('div', null, 'A human still needs to check:'));
+    const ul = el('ul');
+    d.needs_human_verification.forEach(x => ul.appendChild(el('li', 'muted', '• ' + x)));
+    card.appendChild(ul);
+  }
+  app.appendChild(card);
+}
+function showDna(r, byId) {
+  if (!r.dna) return;
+  section('Origin');
+  const o = el('div', 'card', r.dna.origin.text);
+  o.appendChild(refs(r.dna.origin.evidence_ids, byId));
+  app.appendChild(o);
+
+  if ((r.dna.key_decisions || []).length) {
+    section('Key decisions');
+    r.dna.key_decisions.forEach(k => {
+      const c = el('div', 'card', k.date + ': ' + k.summary);
+      c.appendChild(refs(k.evidence_ids, byId));
+      app.appendChild(c);
+    });
+  }
+  if ((r.dna.changed_together || []).length) {
+    section('Files changed together');
+    r.dna.changed_together.forEach(f => {
+      const c = el('div', 'card');
+      c.appendChild(badge(f.evidence_type));
+      c.appendChild(el('span', null, f.path + ' (' + f.times + ' times)'));
+      app.appendChild(c);
+    });
+  }
+}
+
+// ---------- page ----------
+function buildNav(current) {
+  nav.textContent = '';
+  MODES.concat(DATA.ask_examples && DATA.ask_examples[DEMO_NO_EVIDENCE.key] ? [DEMO_NO_EVIDENCE] : []).forEach(m => {
+    const b = el('button', m === DEMO_NO_EVIDENCE ? 'demo' : '', m.label);
+    b.setAttribute('aria-pressed', m.key === current ? 'true' : 'false');
+    b.addEventListener('click', () => render(m.key));
+    nav.appendChild(b);
+  });
+}
+
+function render(key) {
+  buildNav(key);
+  app.textContent = '';
+  const r = DATA.ask_examples ? DATA.ask_examples[key] : DATA;
+  if (!r) { app.textContent = 'No data for this view.'; return; }
+
+  if (DATA._synthetic_notice || DATA._mock) {
+    banner.className = 'banner';
+    banner.textContent = 'Synthetic sample data. Not a real repository.';
+  }
+  if (r.item) app.appendChild(el('p', 'muted', 'Item: ' + r.item.label));
+
+  if (r.status === 'insufficient_evidence') {          // exact message required by the schema
+    app.appendChild(el('div', 'card abstain', r.message || 'Insufficient evidence in the repository.'));
+    return;
+  }
+  const byId = {};
+  (r.evidence || []).forEach(e => { byId[e.id] = e; });
+
+  if (key === 'history') {
+    showTimeline(r, byId); showDecision(r); showConfidence(r); showSources(r);
+  } else if (key === 'still_needed') {
+    showDrift(r, byId); showAnswer(r, byId); showConfidence(r); showDecision(r); showSnippet(r); showSources(r);
+  } else if (key === 'dna') {
+    showDna(r, byId); showSnippet(r); showConnected(r); showSources(r);
+  } else {                                              // 'why'
+    showAnswer(r, byId); showConfidence(r); showDecision(r); showWho(r); showSnippet(r); showSources(r); showConnected(r);
+  }
+  showLimitations(r);
+}
+
+async function load() {
+  try {
+    const res = await fetch(DATA_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    DATA = await res.json();
+    render('why');
+  } catch (err) {
+    app.textContent = 'Could not load ' + DATA_URL + '. Open this page with Live Server, not by double-clicking it. (' + err.message + ')';
+  }
+}
+load();
+</script>
+</body>
+</html>
