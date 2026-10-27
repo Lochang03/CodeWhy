@@ -42,6 +42,7 @@
   pre { background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px; overflow-x:auto; font-size:13px; margin:6px 0 0; }
   a { color:inherit; }
   ul { padding-left:0; list-style:none; margin:0; }
+  .plain { color:var(--text); border-style:solid; border-color:var(--line); }
 </style>
 </head>
 <body>
@@ -314,9 +315,9 @@ function showItems(items) {
   items.forEach(it => {
     const b = el('button', 'item');
     b.setAttribute('aria-pressed', state.item && state.item.id === it.id ? 'true' : 'false');
-    b.appendChild(badge(it.state === 'explained' ? 'verified' : 'unknown'));
+    b.appendChild(el('span', 'badge plain', it.state));
     b.appendChild(el('span', null, it.label));
-    b.appendChild(el('span', 'muted', '  ' + it.state + ' · ' + it.evidence_count + ' evidence'));
+    b.appendChild(el('span', 'muted', '  ' + it.evidence_count + ' evidence'));
     b.addEventListener('click', () => { state.item = it; state.mode = 'why'; showItems(items); renderResult(); });
     itemsBox.appendChild(b);
   });
