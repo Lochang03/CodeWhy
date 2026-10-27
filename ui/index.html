@@ -16,10 +16,16 @@
   h1 { margin:0 0 8px; font-size:26px; }
   h2 { font-size:16px; margin:24px 0 8px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
   .banner { background:#fff3cd; color:#5c4400; border:1px solid #e6cf7a; padding:8px 12px; border-radius:8px; font-size:14px; margin-bottom:16px; }
+  .row { display:flex; gap:8px; }
+  .row input { flex:1; font:inherit; padding:9px 12px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); }
+  button { font:inherit; padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
   .nav { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 16px; }
-  .nav button { font:inherit; padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
-  .nav button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
-  .nav button.demo { font-size:13px; color:var(--muted); border-style:dashed; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:10px; }
+  .stat .num { font-size:28px; font-weight:700; }
+  .stat .name { font-weight:600; }
+  .item { display:block; width:100%; text-align:left; margin-bottom:8px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
   .badge { display:inline-block; font-size:12px; font-weight:600; padding:1px 8px; border-radius:999px; border:1.5px solid currentColor; margin-right:8px; }
   .verified { color:var(--verified); }
@@ -42,8 +48,18 @@
 <main>
   <h1>CodeWhy</h1>
   <div id="banner"></div>
+
+  <h2>Repository</h2>
+  <div class="row">
+    <input id="repo-input" type="text" value="https://github.com/sample-org/sample-repo" aria-label="GitHub repository URL">
+    <button id="analyze" class="primary">Analyze</button>
+  </div>
+  <div id="repo-msg"></div>
+
+  <div id="overview"></div>
+  <div id="items"></div>
   <div id="nav" class="nav"></div>
-  <div id="app">Loading...</div>
+  <div id="app"></div>
 </main>
 
 <script>
@@ -54,16 +70,27 @@ const MODES = [
   { key: 'still_needed', label: 'Is it still needed?' },
   { key: 'dna',          label: 'Code DNA' },
 ];
-const DEMO_NO_EVIDENCE = { key: 'insufficient_evidence', label: 'Demo: no evidence' };
 const EVENT_NAMES = {
   original_change: 'Original change', discussion: 'Discussion', later_change: 'Later change',
   revert: 'Revert', supersession: 'Superseded',
 };
+const STATS = [
+  ['explained', 'Explained', 'have evidence saying why they exist'],
+  ['unknown', 'Unknown', 'no evidence found'],
+  ['unchanged_since_decision', 'Unchanged', 'not touched since the decision'],
+  ['changed_since_decision', 'Changed', 'later commits touched them'],
+  ['superseded', 'Superseded', 'a later decision replaced them'],
+  ['possibly_outdated', 'Possibly outdated', 'flagged by the heuristic drift check'],
+];
 
 const app = document.getElementById('app');
-const banner = document.getElementById('banner');
 const nav = document.getElementById('nav');
+const banner = document.getElementById('banner');
+const repoMsg = document.getElementById('repo-msg');
+const overviewBox = document.getElementById('overview');
+const itemsBox = document.getElementById('items');
 let DATA = null;
+let state = { repo: null, item: null, mode: 'why' };
 
 // ---------- small helpers ----------
 function el(tag, cls, text) {              // safe: text is never treated as HTML
@@ -72,7 +99,8 @@ function el(tag, cls, text) {              // safe: text is never treated as HTM
   if (text !== undefined && text !== null) e.textContent = text;
   return e;
 }
-function section(title) { app.appendChild(el('h2', null, title)); }
+function heading(box, title) { box.appendChild(el('h2', null, title)); }
+function section(title) { heading(app, title); }
 function safeUrl(u) { return typeof u === 'string' && /^https?:\/\//.test(u) ? u : null; }
 function badge(label) {
   const l = ['verified', 'inferred', 'unknown', 'heuristic'].includes(label) ? label : 'unknown';
@@ -93,8 +121,26 @@ function refs(ids, byId) {                 // [ev1] [ev2] links
   });
   return s;
 }
+// Accepts "https://github.com/owner/repo", "github.com/owner/repo/", "owner/repo", with or without .git
+function parseRepo(text) {
+  const m = String(text).trim().replace(/\.git$/, '').replace(/\/+$/, '')
+    .match(/^(?:https?:\/\/)?(?:www\.)?(?:github\.com\/)?([\w.-]+)\/([\w.-]+)$/i);
+  return m ? m[1] + '/' + m[2] : null;
+}
 
-// ---------- reusable sections ----------
+// ---------- the ONE place that gets answers (swap this for POST /ask later) ----------
+async function getAnswer(repo, item, mode) {
+  const ex = DATA.ask_examples || {};
+  if (item.id === 'file:src/net/retry.py') return ex[mode] || null;
+  if (item.state === 'unknown' && ex.insufficient_evidence) {
+    const r = JSON.parse(JSON.stringify(ex.insufficient_evidence));
+    r.item = { id: item.id, kind: item.kind, label: item.label };
+    return r;
+  }
+  return null;
+}
+
+// ---------- reusable result sections ----------
 function showAnswer(r, byId) {
   if (!r.answer || (Array.isArray(r.answer) && !r.answer.length)) return;
   section('Answer');
@@ -177,8 +223,6 @@ function showLimitations(r) {
   section('Limitations');
   app.appendChild(el('p', 'muted', r.limitations.join(' · ')));
 }
-
-// ---------- mode-specific sections ----------
 function showTimeline(r, byId) {
   if (!(r.timeline || []).length) return;
   section('Timeline');
@@ -204,11 +248,9 @@ function showDrift(r, byId) {
   card.appendChild(el('div', 'title', d.label || 'Possibly outdated. Verify.'));
   card.appendChild(badge('heuristic'));
   card.appendChild(el('span', 'muted', 'Heuristic, not a verified fact'));
-
   const orig = el('div'); orig.appendChild(el('strong', null, 'Original reason: ')); orig.appendChild(refs(d.original_reason_evidence, byId));
   const later = el('div'); later.appendChild(el('strong', null, 'Later change: ')); later.appendChild(refs(d.later_change_evidence, byId));
   card.appendChild(orig); card.appendChild(later);
-
   if (d.workaround_still_in_code) {
     const w = d.workaround_still_in_code;
     card.appendChild(el('div', null, 'Workaround still in code: ' + (w.checked ? 'checked. ' : 'not checked. ') + (w.path || '') + ' ' + (w.note || '')));
@@ -227,7 +269,6 @@ function showDna(r, byId) {
   const o = el('div', 'card', r.dna.origin.text);
   o.appendChild(refs(r.dna.origin.evidence_ids, byId));
   app.appendChild(o);
-
   if ((r.dna.key_decisions || []).length) {
     section('Key decisions');
     r.dna.key_decisions.forEach(k => {
@@ -247,46 +288,103 @@ function showDna(r, byId) {
   }
 }
 
-// ---------- page ----------
-function buildNav(current) {
+// ---------- page parts ----------
+function showOverview(ov) {
+  overviewBox.textContent = '';
+  heading(overviewBox, 'Overview: ' + ov.repo);
+  const g = ov.ingested || {};
+  overviewBox.appendChild(el('p', 'muted',
+    'Based on ' + g.commits + ' commits, ' + g.pulls + ' pull requests and ' + g.issues + ' issues' +
+    (g.fetched_at ? ' (fetched ' + g.fetched_at + ')' : '') + '. ' + (g.note || '')));
+  const grid = el('div', 'stats');
+  STATS.forEach(([key, name, desc]) => {
+    const c = el('div', 'card stat');
+    c.appendChild(el('div', 'num', String(ov.counts[key])));
+    c.appendChild(el('div', 'name', name));
+    c.appendChild(el('div', 'muted', desc));
+    grid.appendChild(c);
+  });
+  overviewBox.appendChild(grid);
+  overviewBox.appendChild(el('p', 'muted', '"Possibly outdated" can overlap the other groups. Counts cover only the fetched slice of history.'));
+}
+
+function showItems(items) {
+  itemsBox.textContent = '';
+  heading(itemsBox, 'Pick a file or decision');
+  items.forEach(it => {
+    const b = el('button', 'item');
+    b.setAttribute('aria-pressed', state.item && state.item.id === it.id ? 'true' : 'false');
+    b.appendChild(badge(it.state === 'explained' ? 'verified' : 'unknown'));
+    b.appendChild(el('span', null, it.label));
+    b.appendChild(el('span', 'muted', '  ' + it.state + ' · ' + it.evidence_count + ' evidence'));
+    b.addEventListener('click', () => { state.item = it; state.mode = 'why'; showItems(items); renderResult(); });
+    itemsBox.appendChild(b);
+  });
+}
+
+function buildNav() {
   nav.textContent = '';
-  MODES.concat(DATA.ask_examples && DATA.ask_examples[DEMO_NO_EVIDENCE.key] ? [DEMO_NO_EVIDENCE] : []).forEach(m => {
-    const b = el('button', m === DEMO_NO_EVIDENCE ? 'demo' : '', m.label);
-    b.setAttribute('aria-pressed', m.key === current ? 'true' : 'false');
-    b.addEventListener('click', () => render(m.key));
+  if (!state.item) return;
+  MODES.forEach(m => {
+    const b = el('button', null, m.label);
+    b.setAttribute('aria-pressed', m.key === state.mode ? 'true' : 'false');
+    b.addEventListener('click', () => { state.mode = m.key; renderResult(); });
     nav.appendChild(b);
   });
 }
 
-function render(key) {
-  buildNav(key);
+async function renderResult() {
+  buildNav();
   app.textContent = '';
-  const r = DATA.ask_examples ? DATA.ask_examples[key] : DATA;
-  if (!r) { app.textContent = 'No data for this view.'; return; }
-
-  if (DATA._synthetic_notice || DATA._mock) {
-    banner.className = 'banner';
-    banner.textContent = 'Synthetic sample data. Not a real repository.';
+  if (!state.item) return;
+  const r = await getAnswer(state.repo, state.item, state.mode);
+  if (!r) {
+    app.appendChild(el('div', 'card', 'The sample data has no answer for this item. (Real data will.)'));
+    return;
   }
-  if (r.item) app.appendChild(el('p', 'muted', 'Item: ' + r.item.label));
-
+  app.appendChild(el('p', 'muted', 'Item: ' + (r.item ? r.item.label : state.item.label)));
   if (r.status === 'insufficient_evidence') {          // exact message required by the schema
     app.appendChild(el('div', 'card abstain', r.message || 'Insufficient evidence in the repository.'));
     return;
   }
   const byId = {};
   (r.evidence || []).forEach(e => { byId[e.id] = e; });
-
+  const key = state.mode;
   if (key === 'history') {
     showTimeline(r, byId); showDecision(r); showConfidence(r); showSources(r);
   } else if (key === 'still_needed') {
     showDrift(r, byId); showAnswer(r, byId); showConfidence(r); showDecision(r); showSnippet(r); showSources(r);
   } else if (key === 'dna') {
     showDna(r, byId); showSnippet(r); showConnected(r); showSources(r);
-  } else {                                              // 'why'
+  } else {
     showAnswer(r, byId); showConfidence(r); showDecision(r); showWho(r); showSnippet(r); showSources(r); showConnected(r);
   }
   showLimitations(r);
+}
+
+function clearBelowRepo() {
+  overviewBox.textContent = ''; itemsBox.textContent = ''; nav.textContent = ''; app.textContent = '';
+  state = { repo: null, item: null, mode: 'why' };
+}
+
+function analyze() {
+  clearBelowRepo();
+  repoMsg.textContent = '';
+  const repo = parseRepo(document.getElementById('repo-input').value);
+  if (!repo) {
+    repoMsg.appendChild(el('div', 'card abstain', 'Please paste a GitHub URL like https://github.com/owner/repo'));
+    return;
+  }
+  const known = (DATA.repos || []).find(r => r.repo.toLowerCase() === repo.toLowerCase() && r.cached);
+  if (!known) {
+    repoMsg.appendChild(el('div', 'card abstain', 'Not cached: ' + repo));
+    repoMsg.appendChild(el('p', 'muted', 'The demo works only with repositories that were fetched in advance. Try: ' +
+      (DATA.repos || []).filter(r => r.cached).map(r => r.repo).join(', ')));
+    return;
+  }
+  state.repo = known.repo;
+  if (DATA.overview) showOverview(DATA.overview);
+  if (DATA.items && DATA.items.items) showItems(DATA.items.items);
 }
 
 async function load() {
@@ -294,7 +392,12 @@ async function load() {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     DATA = await res.json();
-    render('why');
+    if (DATA._synthetic_notice || DATA._mock) {
+      banner.className = 'banner';
+      banner.textContent = 'Synthetic sample data. Not a real repository.';
+    }
+    document.getElementById('analyze').addEventListener('click', analyze);
+    document.getElementById('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
   } catch (err) {
     app.textContent = 'Could not load ' + DATA_URL + '. Open this page with Live Server, not by double-clicking it. (' + err.message + ')';
   }
