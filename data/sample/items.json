@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "file:src/net/retry.py",
+      "kind": "file",
+      "label": "src/net/retry.py",
+      "evidence_count": 3,
+      "state": "explained"
+    },
+    {
+      "id": "file:src/util/misc.py",
+      "kind": "file",
+      "label": "src/util/misc.py",
+      "evidence_count": 0,
+      "state": "unknown"
+    }
+  ],
+  "_mock": true
+}
