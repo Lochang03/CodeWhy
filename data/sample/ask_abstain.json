@@ -1,0 +1,33 @@
+{
+  "status": "insufficient_evidence",
+  "message": "Insufficient evidence in the repository.",
+  "mode": "why",
+  "routed_mode": null,
+  "item": {
+    "id": "file:src/util/misc.py",
+    "kind": "file",
+    "label": "src/util/misc.py"
+  },
+  "answer": [],
+  "confidence": {
+    "level": "none",
+    "basis": {
+      "verified_links": 0,
+      "inferred_links": 0,
+      "distinct_sources": 0
+    }
+  },
+  "evidence": [],
+  "who_to_ask": null,
+  "decision": null,
+  "timeline": [],
+  "drift_alert": null,
+  "dna": null,
+  "connected_items": [],
+  "connected_note": null,
+  "limitations": [
+    "SYNTHETIC SAMPLE DATA: not a real repository finding",
+    "Bounded slice of history"
+  ],
+  "_mock": true
+}

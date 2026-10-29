@@ -1,0 +1,122 @@
+{
+  "status": "answered",
+  "message": null,
+  "mode": "history",
+  "routed_mode": null,
+  "item": {
+    "id": "file:src/net/retry.py",
+    "kind": "file",
+    "label": "src/net/retry.py"
+  },
+  "answer": [],
+  "confidence": {
+    "level": "high",
+    "basis": {
+      "verified_links": 4,
+      "inferred_links": 0,
+      "distinct_sources": 2
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev2",
+      "type": "issue",
+      "title": "Gateway drops bursty clients",
+      "snippet": "Gateway returns 502 under bursts.",
+      "url": "https://example.com/issue/2",
+      "date": "2021-06-01",
+      "author": "dev-b",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev1",
+      "type": "commit",
+      "title": "Limit retries to 3",
+      "snippet": "Cap retries at 3: upstream gateway drops bursts.",
+      "url": "https://example.com/commit/1",
+      "date": "2021-06-10",
+      "author": "dev-a",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev4",
+      "type": "issue",
+      "title": "Gateway burst handling fixed (closed)",
+      "snippet": "Gateway now queues bursts.",
+      "url": "https://example.com/issue/4",
+      "date": "2022-11-20",
+      "author": "dev-c",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev5",
+      "type": "commit",
+      "title": "Revert retry cap to 3, use backoff",
+      "snippet": "Replaces fixed cap with exponential backoff.",
+      "url": "https://example.com/commit/5",
+      "date": "2023-02-02",
+      "author": "dev-c",
+      "evidence_type": "verified"
+    }
+  ],
+  "who_to_ask": null,
+  "decision": {
+    "summary": "Cap retries at 3",
+    "date": "2021-06-10",
+    "status": "superseded",
+    "superseded_by": {
+      "summary": "Exponential backoff replaces fixed cap",
+      "date": "2023-02-02",
+      "evidence_ids": [
+        "ev5"
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "date": "2021-06-01",
+      "event": "discussion",
+      "text": "Issue reports gateway drops bursts.",
+      "evidence_ids": [
+        "ev2"
+      ],
+      "evidence_type": "verified"
+    },
+    {
+      "date": "2021-06-10",
+      "event": "original_change",
+      "text": "Retries capped at 3.",
+      "evidence_ids": [
+        "ev1"
+      ],
+      "evidence_type": "verified"
+    },
+    {
+      "date": "2022-11-20",
+      "event": "later_change",
+      "text": "Gateway issue closed as fixed.",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "evidence_type": "verified"
+    },
+    {
+      "date": "2023-02-02",
+      "event": "supersession",
+      "text": "Fixed cap replaced by backoff.",
+      "evidence_ids": [
+        "ev5"
+      ],
+      "evidence_type": "verified"
+    }
+  ],
+  "drift_alert": null,
+  "dna": null,
+  "connected_items": [],
+  "connected_note": null,
+  "limitations": [
+    "SYNTHETIC SAMPLE DATA: not a real repository finding",
+    "Bounded slice of history"
+  ],
+  "_mock": true
+}

@@ -1,0 +1,105 @@
+{
+  "status": "answered",
+  "message": null,
+  "mode": "why",
+  "routed_mode": null,
+  "item": {
+    "id": "file:src/net/retry.py",
+    "kind": "file",
+    "label": "src/net/retry.py"
+  },
+  "answer": [
+    {
+      "text": "Retries were capped at 3 because the upstream gateway dropped bursty clients.",
+      "evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "label": "verified"
+    },
+    {
+      "text": "The cap was introduced in the pull request that fixed the gateway issue.",
+      "evidence_ids": [
+        "ev3"
+      ],
+      "label": "verified"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": {
+      "verified_links": 3,
+      "inferred_links": 0,
+      "distinct_sources": 3
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev1",
+      "type": "commit",
+      "title": "Limit retries to 3",
+      "snippet": "Cap retries at 3: upstream gateway drops bursts.",
+      "url": "https://example.com/commit/1",
+      "date": "2021-06-10",
+      "author": "dev-a",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev2",
+      "type": "issue",
+      "title": "Gateway drops bursty clients",
+      "snippet": "Gateway returns 502 under bursts.",
+      "url": "https://example.com/issue/2",
+      "date": "2021-06-01",
+      "author": "dev-b",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev3",
+      "type": "pull_request",
+      "title": "Add retry cap",
+      "snippet": "Fixes #2. Caps retries to avoid hammering the gateway.",
+      "url": "https://example.com/pull_request/3",
+      "date": "2021-06-10",
+      "author": "dev-a",
+      "evidence_type": "verified"
+    }
+  ],
+  "who_to_ask": {
+    "login": "dev-a",
+    "reason": "author of ev1",
+    "evidence_ids": [
+      "ev1"
+    ],
+    "last_active": "2023-05-01",
+    "still_active": false
+  },
+  "decision": {
+    "summary": "Cap retries at 3",
+    "date": "2021-06-10",
+    "status": "current",
+    "superseded_by": null
+  },
+  "timeline": [],
+  "drift_alert": null,
+  "dna": null,
+  "connected_items": [
+    {
+      "id": "issue:2",
+      "kind": "issue",
+      "label": "Gateway drops bursty clients",
+      "edge_type": "MOTIVATED_BY",
+      "evidence_type": "verified",
+      "evidence_ids": [
+        "ev2"
+      ]
+    }
+  ],
+  "connected_note": "Based on repo history only, not a prediction.",
+  "limitations": [
+    "SYNTHETIC SAMPLE DATA: not a real repository finding",
+    "Bounded slice of history",
+    "Design docs not ingested"
+  ],
+  "_mock": true
+}
