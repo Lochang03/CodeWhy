@@ -63,7 +63,7 @@
 </main>
 
 <script>
-const DATA_URL = 'sample.json';
+const API_BASE = 'http://localhost:8000';
 const MODES = [
   { key: 'why',          label: 'Why is it like this?' },
   { key: 'history',      label: 'How did it change?' },
@@ -89,7 +89,6 @@ const banner = document.getElementById('banner');
 const repoMsg = document.getElementById('repo-msg');
 const overviewBox = document.getElementById('overview');
 const itemsBox = document.getElementById('items');
-let DATA = null;
 let REPOS = [];
 let state = { repo: null, item: null, mode: 'why' };
 
@@ -129,21 +128,30 @@ function parseRepo(text) {
   return m ? m[1] + '/' + m[2] : null;
 }
 
-// ---------- data loading (swap these for the real API later) ----------
-async function loadRepos() {               // later: fetch(API_BASE + '/repos')
-  return DATA.repos || [];
+// ---------- API access (the only place that talks to the backend) ----------
+async function api(path, options) {
+  const res = await fetch(API_BASE + path, options);
+  if (!res.ok) {
+    const err = new Error('HTTP ' + res.status);
+    err.status = res.status;
+    try { err.body = await res.json(); } catch (e) {}
+    throw err;
+  }
+  return res.json();
 }
 
-// the ONE place that gets answers (later: POST /ask)
+async function loadRepos() {
+  const d = await api('/repos');
+  return Array.isArray(d) ? d : (d.repos || []);
+}
+
+// the ONE place that gets answers
 async function getAnswer(repo, item, mode) {
-  const ex = DATA.ask_examples || {};
-  if (item.id === 'file:src/net/retry.py') return ex[mode] || null;
-  if (item.state === 'unknown' && ex.insufficient_evidence) {
-    const r = JSON.parse(JSON.stringify(ex.insufficient_evidence));
-    r.item = { id: item.id, kind: item.kind, label: item.label };
-    return r;
-  }
-  return null;
+  return api('/ask', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ repo: repo, item_id: item.id, mode: mode })
+  });
 }
 
 // ---------- reusable result sections ----------
@@ -283,17 +291,18 @@ function showDna(r, byId) {
 }
 
 // ---------- page parts ----------
-function showOverview(ov) {
+function showOverview(ov, repoName) {
   overviewBox.textContent = '';
-  heading(overviewBox, 'Overview: ' + ov.repo);
+  heading(overviewBox, 'Overview: ' + (ov.repo || repoName));
   const g = ov.ingested || {};
   overviewBox.appendChild(el('p', 'muted',
     'Based on ' + g.commits + ' commits, ' + g.pulls + ' pull requests and ' + g.issues + ' issues' +
     (g.fetched_at ? ' (fetched ' + g.fetched_at + ')' : '') + '. ' + (g.note || '')));
   const grid = el('div', 'stats');
+  const counts = ov.counts || {};
   STATS.forEach(([key, name, desc]) => {
     const c = el('div', 'card stat');
-    c.appendChild(el('div', 'num', String(ov.counts[key])));
+    c.appendChild(el('div', 'num', String(counts[key] !== undefined ? counts[key] : '-')));
     c.appendChild(el('div', 'name', name));
     c.appendChild(el('div', 'muted', desc));
     grid.appendChild(c);
@@ -331,9 +340,11 @@ async function renderResult() {
   buildNav();
   app.textContent = '';
   if (!state.item) return;
-  const r = await getAnswer(state.repo, state.item, state.mode);
+  let r = null;
+  try { r = await getAnswer(state.repo, state.item, state.mode); }
+  catch (err) { app.appendChild(el('div', 'card abstain', 'Could not get an answer. ' + err.message)); return; }
   if (!r) {
-    app.appendChild(el('div', 'card', 'The sample data has no answer for this item. (Real data will.)'));
+    app.appendChild(el('div', 'card', 'No answer returned for this item.'));
     return;
   }
   app.appendChild(el('p', 'muted', 'Item: ' + (r.item ? r.item.label : state.item.label)));
@@ -361,7 +372,7 @@ function clearBelowRepo() {
   state = { repo: null, item: null, mode: 'why' };
 }
 
-function analyze() {
+async function analyze() {
   clearBelowRepo();
   repoMsg.textContent = '';
   const repo = parseRepo(document.getElementById('repo-input').value);
@@ -369,32 +380,34 @@ function analyze() {
     repoMsg.appendChild(el('div', 'card abstain', 'Please paste a GitHub URL like https://github.com/owner/repo'));
     return;
   }
-  const known = REPOS.find(r => r.repo.toLowerCase() === repo.toLowerCase() && r.cached);
-  if (!known) {
-    repoMsg.appendChild(el('div', 'card abstain', 'Not cached: ' + repo));
-    repoMsg.appendChild(el('p', 'muted', 'The demo works only with repositories that were fetched in advance. Try: ' +
-      REPOS.filter(r => r.cached).map(r => r.repo).join(', ')));
-    return;
+  try {
+    const ov = await api('/repos/' + repo + '/overview');
+    const it = await api('/repos/' + repo + '/items');
+    state.repo = repo;
+    showOverview(ov, repo);
+    showItems(Array.isArray(it) ? it : (it.items || []));
+  } catch (err) {
+    if (err.status === 404) {
+      repoMsg.appendChild(el('div', 'card abstain', 'Not cached: ' + repo));
+      repoMsg.appendChild(el('p', 'muted', 'The demo works only with repositories that were fetched in advance. Try: ' +
+        REPOS.filter(r => r.cached).map(r => r.repo).join(', ')));
+    } else {
+      repoMsg.appendChild(el('div', 'card abstain', 'Could not load this repository. ' + err.message));
+    }
   }
-  state.repo = known.repo;
-  if (DATA.overview) showOverview(DATA.overview);
-  if (DATA.items && DATA.items.items) showItems(DATA.items.items);
 }
 
 async function load() {
+  document.getElementById('analyze').addEventListener('click', analyze);
+  document.getElementById('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
   try {
-    const res = await fetch(DATA_URL);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    DATA = await res.json();
     REPOS = await loadRepos();
-    if (DATA._synthetic_notice || DATA._mock) {
+    if (REPOS.some(r => r.synthetic)) {
       banner.className = 'banner';
       banner.textContent = 'Synthetic sample data. Not a real repository.';
     }
-    document.getElementById('analyze').addEventListener('click', analyze);
-    document.getElementById('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
   } catch (err) {
-    app.textContent = 'Could not load ' + DATA_URL + '. Open this page with Live Server, not by double-clicking it. (' + err.message + ')';
+    app.textContent = 'Could not reach the API at ' + API_BASE + '. Is uvicorn running? (' + err.message + ')';
   }
 }
 load();
