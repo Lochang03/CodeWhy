@@ -1,12 +1,8 @@
 {
   "_synthetic_notice": "SYNTHETIC SAMPLE DATA. Not a real repository. Every commit, issue, person and URL below is invented for UI development only.",
-  "_schema_version": "v2 (Lochan proposal) + optional code_snippet / ai_code_summary slots, not yet agreed",
+  "_schema_version": "v2 (Lochan), code_snippet and ai_code_summary removed",
   "repos": [
-    {
-      "repo": "sample-org/sample-repo",
-      "cached": true,
-      "synthetic": true
-    }
+    { "repo": "sample-org/sample-repo", "cached": true, "synthetic": true }
   ],
   "overview": {
     "repo": "sample-org/sample-repo",
@@ -29,27 +25,9 @@
   },
   "items": {
     "items": [
-      {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py",
-        "evidence_count": 3,
-        "state": "explained"
-      },
-      {
-        "id": "file:src/net/client.py",
-        "kind": "file",
-        "label": "src/net/client.py",
-        "evidence_count": 5,
-        "state": "explained"
-      },
-      {
-        "id": "file:src/utils/helpers.py",
-        "kind": "file",
-        "label": "src/utils/helpers.py",
-        "evidence_count": 0,
-        "state": "unknown"
-      }
+      { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py", "evidence_count": 3, "state": "explained" },
+      { "id": "file:src/net/client.py", "kind": "file", "label": "src/net/client.py", "evidence_count": 5, "state": "explained" },
+      { "id": "file:src/utils/helpers.py", "kind": "file", "label": "src/utils/helpers.py", "evidence_count": 0, "state": "unknown" }
     ]
   },
   "ask_examples": {
@@ -64,75 +42,47 @@
       "message": null,
       "mode": "why",
       "routed_mode": null,
-      "item": {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py"
-      },
+      "item": { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py" },
       "answer": [
         {
           "text": "This retry loop was added in March 2024 as a workaround for an upstream API that dropped connections (issue #41).",
-          "evidence_ids": [
-            "ev1",
-            "ev2"
-          ],
+          "evidence_ids": ["ev1", "ev2"],
           "label": "verified"
         },
         {
           "text": "The pull request describes it as temporary, to be removed once upstream is fixed.",
-          "evidence_ids": [
-            "ev3"
-          ],
+          "evidence_ids": ["ev3"],
           "label": "verified"
         }
       ],
-      "confidence": {
-        "level": "high",
-        "basis": {
-          "verified_links": 3,
-          "inferred_links": 0,
-          "distinct_sources": 3
-        }
-      },
+      "confidence": { "level": "high" },
       "evidence": [
         {
-          "id": "ev1",
-          "type": "commit",
+          "id": "ev1", "type": "commit",
           "title": "Add retry workaround for flaky upstream API (see #41)",
           "snippet": "Wrap fetch in a fixed 3-attempt retry until upstream is stable.",
           "url": "https://example.com/synthetic/commit/abc1234",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev2",
-          "type": "issue",
+          "id": "ev2", "type": "issue",
           "title": "#41 Upstream API drops connections randomly",
           "snippet": "Roughly 1 in 20 calls fail with a connection reset.",
           "url": "https://example.com/synthetic/issues/41",
-          "date": "2024-03-08",
-          "author": "sample-dev-b",
-          "evidence_type": "verified"
+          "date": "2024-03-08", "author": "sample-dev-b", "evidence_type": "verified"
         },
         {
-          "id": "ev3",
-          "type": "pull_request",
+          "id": "ev3", "type": "pull_request",
           "title": "#58 Add temporary retry until upstream fixes #41",
           "snippet": "Temporary workaround. Remove once upstream is fixed.",
           "url": "https://example.com/synthetic/pull/58",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         }
       ],
       "who_to_ask": {
         "login": "sample-dev-a",
         "reason": "author of ev1 and ev3",
-        "evidence_ids": [
-          "ev1",
-          "ev3"
-        ],
+        "evidence_ids": ["ev1", "ev3"],
         "last_active": "2025-01-20",
         "still_active": true
       },
@@ -145,114 +95,64 @@
       "timeline": [],
       "drift_alert": null,
       "dna": null,
-      "code_snippet": {
-        "source": "repo_code",
-        "note": "Code as it exists in the repo. Not an AI summary.",
-        "path": "src/net/retry.py",
-        "language": "python",
-        "start_line": 12,
-        "end_line": 22,
-        "introduced_in_evidence_id": "ev1",
-        "text": "# TEMP: workaround for flaky upstream API (#41)\nMAX_ATTEMPTS = 3\n\ndef fetch_with_retry(call):\n    for attempt in range(MAX_ATTEMPTS):\n        try:\n            return call()\n        except ConnectionError:\n            if attempt == MAX_ATTEMPTS - 1:\n                raise"
-      },
-      "ai_code_summary": null,
       "connected_items": [
         {
-          "id": "issue:41",
-          "kind": "issue",
+          "id": "issue:41", "kind": "issue",
           "label": "#41 Upstream API drops connections randomly",
-          "edge_type": "MOTIVATED_BY",
-          "evidence_type": "verified",
-          "evidence_ids": [
-            "ev2"
-          ]
+          "edge_type": "MOTIVATED_BY", "evidence_type": "verified", "evidence_ids": ["ev2"]
         },
         {
-          "id": "pr:58",
-          "kind": "pull_request",
+          "id": "pr:58", "kind": "pull_request",
           "label": "#58 Add temporary retry until upstream fixes #41",
-          "edge_type": "DECIDED_IN",
-          "evidence_type": "verified",
-          "evidence_ids": [
-            "ev3"
-          ]
+          "edge_type": "DECIDED_IN", "evidence_type": "verified", "evidence_ids": ["ev3"]
         }
       ],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     },
     "history": {
       "status": "answered",
       "message": null,
       "mode": "history",
       "routed_mode": null,
-      "item": {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py"
-      },
+      "item": { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py" },
       "answer": [],
-      "confidence": {
-        "level": "medium",
-        "basis": {
-          "verified_links": 4,
-          "inferred_links": 1,
-          "distinct_sources": 5
-        }
-      },
+      "confidence": { "level": "medium" },
       "evidence": [
         {
-          "id": "ev1",
-          "type": "commit",
+          "id": "ev1", "type": "commit",
           "title": "Add retry workaround for flaky upstream API (see #41)",
           "snippet": "Wrap fetch in a fixed 3-attempt retry until upstream is stable.",
           "url": "https://example.com/synthetic/commit/abc1234",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev2",
-          "type": "issue",
+          "id": "ev2", "type": "issue",
           "title": "#41 Upstream API drops connections randomly",
           "snippet": "Roughly 1 in 20 calls fail with a connection reset.",
           "url": "https://example.com/synthetic/issues/41",
-          "date": "2024-03-08",
-          "author": "sample-dev-b",
-          "evidence_type": "verified"
+          "date": "2024-03-08", "author": "sample-dev-b", "evidence_type": "verified"
         },
         {
-          "id": "ev3",
-          "type": "pull_request",
+          "id": "ev3", "type": "pull_request",
           "title": "#58 Add temporary retry until upstream fixes #41",
           "snippet": "Temporary workaround. Remove once upstream is fixed.",
           "url": "https://example.com/synthetic/pull/58",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev4",
-          "type": "comment",
+          "id": "ev4", "type": "comment",
           "title": "Comment on #41 when closed",
           "snippet": "Upstream fixed this in client v2.3, retries should no longer be needed.",
           "url": "https://example.com/synthetic/issues/41#comment-2",
-          "date": "2024-09-02",
-          "author": "sample-dev-b",
-          "evidence_type": "verified"
+          "date": "2024-09-02", "author": "sample-dev-b", "evidence_type": "verified"
         },
         {
-          "id": "ev5",
-          "type": "commit",
+          "id": "ev5", "type": "commit",
           "title": "Bump upstream-client to 2.3",
           "snippet": "Dependency bump.",
           "url": "https://example.com/synthetic/commit/def5678",
-          "date": "2024-09-05",
-          "author": "sample-dev-b",
-          "evidence_type": "inferred"
+          "date": "2024-09-05", "author": "sample-dev-b", "evidence_type": "inferred"
         }
       ],
       "who_to_ask": null,
@@ -264,122 +164,74 @@
       },
       "timeline": [
         {
-          "date": "2024-03-08",
-          "event": "discussion",
+          "date": "2024-03-08", "event": "discussion",
           "text": "Issue #41 opened: upstream drops connections.",
-          "evidence_ids": [
-            "ev2"
-          ],
-          "evidence_type": "verified"
+          "evidence_ids": ["ev2"], "evidence_type": "verified"
         },
         {
-          "date": "2024-03-10",
-          "event": "original_change",
+          "date": "2024-03-10", "event": "original_change",
           "text": "Retry workaround added in PR #58.",
-          "evidence_ids": [
-            "ev1",
-            "ev3"
-          ],
-          "evidence_type": "verified"
+          "evidence_ids": ["ev1", "ev3"], "evidence_type": "verified"
         },
         {
-          "date": "2024-09-02",
-          "event": "discussion",
+          "date": "2024-09-02", "event": "discussion",
           "text": "Issue #41 closed, upstream fixed in v2.3.",
-          "evidence_ids": [
-            "ev4"
-          ],
-          "evidence_type": "verified"
+          "evidence_ids": ["ev4"], "evidence_type": "verified"
         },
         {
-          "date": "2024-09-05",
-          "event": "later_change",
+          "date": "2024-09-05", "event": "later_change",
           "text": "Dependency bumped to client v2.3.",
-          "evidence_ids": [
-            "ev5"
-          ],
-          "evidence_type": "inferred"
+          "evidence_ids": ["ev5"], "evidence_type": "inferred"
         }
       ],
       "drift_alert": null,
       "dna": null,
-      "code_snippet": null,
-      "ai_code_summary": null,
       "connected_items": [],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     },
     "still_needed": {
       "status": "answered",
       "message": null,
       "mode": "still_needed",
       "routed_mode": null,
-      "item": {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py"
-      },
+      "item": { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py" },
       "answer": [
         {
           "text": "The reason this workaround was added may no longer apply. A later comment says upstream fixed the problem.",
-          "evidence_ids": [
-            "ev3",
-            "ev4"
-          ],
+          "evidence_ids": ["ev3", "ev4"],
           "label": "inferred"
         }
       ],
-      "confidence": {
-        "level": "medium",
-        "basis": {
-          "verified_links": 3,
-          "inferred_links": 1,
-          "distinct_sources": 4
-        }
-      },
+      "confidence": { "level": "medium" },
       "evidence": [
         {
-          "id": "ev1",
-          "type": "commit",
+          "id": "ev1", "type": "commit",
           "title": "Add retry workaround for flaky upstream API (see #41)",
           "snippet": "Wrap fetch in a fixed 3-attempt retry until upstream is stable.",
           "url": "https://example.com/synthetic/commit/abc1234",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev3",
-          "type": "pull_request",
+          "id": "ev3", "type": "pull_request",
           "title": "#58 Add temporary retry until upstream fixes #41",
           "snippet": "Temporary workaround. Remove once upstream is fixed.",
           "url": "https://example.com/synthetic/pull/58",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev4",
-          "type": "comment",
+          "id": "ev4", "type": "comment",
           "title": "Comment on #41 when closed",
           "snippet": "Upstream fixed this in client v2.3, retries should no longer be needed.",
           "url": "https://example.com/synthetic/issues/41#comment-2",
-          "date": "2024-09-02",
-          "author": "sample-dev-b",
-          "evidence_type": "verified"
+          "date": "2024-09-02", "author": "sample-dev-b", "evidence_type": "verified"
         },
         {
-          "id": "ev5",
-          "type": "commit",
+          "id": "ev5", "type": "commit",
           "title": "Bump upstream-client to 2.3",
           "snippet": "Dependency bump.",
           "url": "https://example.com/synthetic/commit/def5678",
-          "date": "2024-09-05",
-          "author": "sample-dev-b",
-          "evidence_type": "inferred"
+          "date": "2024-09-05", "author": "sample-dev-b", "evidence_type": "inferred"
         }
       ],
       "who_to_ask": null,
@@ -393,13 +245,8 @@
       "drift_alert": {
         "label": "Possibly outdated. Verify.",
         "evidence_type": "heuristic",
-        "original_reason_evidence": [
-          "ev3"
-        ],
-        "later_change_evidence": [
-          "ev4",
-          "ev5"
-        ],
+        "original_reason_evidence": ["ev3"],
+        "later_change_evidence": ["ev4", "ev5"],
         "workaround_still_in_code": {
           "checked": true,
           "path": "src/net/retry.py",
@@ -411,63 +258,39 @@
         ]
       },
       "dna": null,
-      "code_snippet": {
-        "source": "repo_code",
-        "note": "Code as it exists in the repo. Not an AI summary.",
-        "path": "src/net/retry.py",
-        "language": "python",
-        "start_line": 12,
-        "end_line": 22,
-        "introduced_in_evidence_id": "ev1",
-        "text": "# TEMP: workaround for flaky upstream API (#41)\nMAX_ATTEMPTS = 3\n\ndef fetch_with_retry(call):\n    for attempt in range(MAX_ATTEMPTS):\n        try:\n            return call()\n        except ConnectionError:\n            if attempt == MAX_ATTEMPTS - 1:\n                raise"
-      },
-      "ai_code_summary": null,
       "connected_items": [],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     },
     "dna": {
       "status": "answered",
       "message": null,
       "mode": "dna",
       "routed_mode": null,
-      "item": {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py"
-      },
+      "item": { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py" },
       "answer": [],
-      "confidence": {
-        "level": "medium",
-        "basis": {
-          "verified_links": 2,
-          "inferred_links": 2,
-          "distinct_sources": 2
-        }
-      },
+      "confidence": { "level": "medium" },
       "evidence": [
         {
-          "id": "ev1",
-          "type": "commit",
+          "id": "ev1", "type": "commit",
           "title": "Add retry workaround for flaky upstream API (see #41)",
           "snippet": "Wrap fetch in a fixed 3-attempt retry until upstream is stable.",
           "url": "https://example.com/synthetic/commit/abc1234",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev3",
-          "type": "pull_request",
+          "id": "ev2", "type": "issue",
+          "title": "#41 Upstream API drops connections randomly",
+          "snippet": "Roughly 1 in 20 calls fail with a connection reset.",
+          "url": "https://example.com/synthetic/issues/41",
+          "date": "2024-03-08", "author": "sample-dev-b", "evidence_type": "verified"
+        },
+        {
+          "id": "ev3", "type": "pull_request",
           "title": "#58 Add temporary retry until upstream fixes #41",
           "snippet": "Temporary workaround. Remove once upstream is fixed.",
           "url": "https://example.com/synthetic/pull/58",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         }
       ],
       "who_to_ask": null,
@@ -477,140 +300,77 @@
       "dna": {
         "origin": {
           "text": "Introduced on 2024-03-10 in PR #58 as a temporary workaround for issue #41.",
-          "evidence_ids": [
-            "ev1",
-            "ev3"
-          ]
+          "evidence_ids": ["ev1", "ev3"]
         },
         "key_decisions": [
           {
             "summary": "Fixed 3-attempt retry instead of exponential backoff.",
             "date": "2024-03-10",
-            "evidence_ids": [
-              "ev3"
-            ]
+            "evidence_ids": ["ev3"]
           }
         ],
         "changed_together": [
-          {
-            "path": "src/net/client.py",
-            "times": 4,
-            "evidence_type": "inferred"
-          },
-          {
-            "path": "tests/test_retry.py",
-            "times": 2,
-            "evidence_type": "inferred"
-          }
+          { "path": "src/net/client.py", "times": 4, "evidence_type": "inferred" },
+          { "path": "tests/test_retry.py", "times": 2, "evidence_type": "inferred" }
         ]
       },
-      "code_snippet": {
-        "source": "repo_code",
-        "note": "Code as it exists in the repo. Not an AI summary.",
-        "path": "src/net/retry.py",
-        "language": "python",
-        "start_line": 12,
-        "end_line": 22,
-        "introduced_in_evidence_id": "ev1",
-        "text": "# TEMP: workaround for flaky upstream API (#41)\nMAX_ATTEMPTS = 3\n\ndef fetch_with_retry(call):\n    for attempt in range(MAX_ATTEMPTS):\n        try:\n            return call()\n        except ConnectionError:\n            if attempt == MAX_ATTEMPTS - 1:\n                raise"
-      },
-      "ai_code_summary": null,
       "connected_items": [
         {
-          "id": "issue:41",
-          "kind": "issue",
+          "id": "issue:41", "kind": "issue",
           "label": "#41 Upstream API drops connections randomly",
-          "edge_type": "MOTIVATED_BY",
-          "evidence_type": "verified",
-          "evidence_ids": [
-            "ev2"
-          ]
+          "edge_type": "MOTIVATED_BY", "evidence_type": "verified", "evidence_ids": ["ev2"]
         },
         {
-          "id": "pr:58",
-          "kind": "pull_request",
+          "id": "pr:58", "kind": "pull_request",
           "label": "#58 Add temporary retry until upstream fixes #41",
-          "edge_type": "DECIDED_IN",
-          "evidence_type": "verified",
-          "evidence_ids": [
-            "ev3"
-          ]
+          "edge_type": "DECIDED_IN", "evidence_type": "verified", "evidence_ids": ["ev3"]
         }
       ],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     },
     "free_why_is_it_still_there": {
       "status": "answered",
       "message": null,
       "mode": "free",
       "routed_mode": "still_needed",
-      "item": {
-        "id": "file:src/net/retry.py",
-        "kind": "file",
-        "label": "src/net/retry.py"
-      },
+      "item": { "id": "file:src/net/retry.py", "kind": "file", "label": "src/net/retry.py" },
       "answer": [
         {
           "text": "The reason this workaround was added may no longer apply. A later comment says upstream fixed the problem.",
-          "evidence_ids": [
-            "ev3",
-            "ev4"
-          ],
+          "evidence_ids": ["ev3", "ev4"],
           "label": "inferred"
         }
       ],
-      "confidence": {
-        "level": "medium",
-        "basis": {
-          "verified_links": 3,
-          "inferred_links": 1,
-          "distinct_sources": 4
-        }
-      },
+      "confidence": { "level": "medium" },
       "evidence": [
         {
-          "id": "ev1",
-          "type": "commit",
+          "id": "ev1", "type": "commit",
           "title": "Add retry workaround for flaky upstream API (see #41)",
           "snippet": "Wrap fetch in a fixed 3-attempt retry until upstream is stable.",
           "url": "https://example.com/synthetic/commit/abc1234",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev3",
-          "type": "pull_request",
+          "id": "ev3", "type": "pull_request",
           "title": "#58 Add temporary retry until upstream fixes #41",
           "snippet": "Temporary workaround. Remove once upstream is fixed.",
           "url": "https://example.com/synthetic/pull/58",
-          "date": "2024-03-10",
-          "author": "sample-dev-a",
-          "evidence_type": "verified"
+          "date": "2024-03-10", "author": "sample-dev-a", "evidence_type": "verified"
         },
         {
-          "id": "ev4",
-          "type": "comment",
+          "id": "ev4", "type": "comment",
           "title": "Comment on #41 when closed",
           "snippet": "Upstream fixed this in client v2.3, retries should no longer be needed.",
           "url": "https://example.com/synthetic/issues/41#comment-2",
-          "date": "2024-09-02",
-          "author": "sample-dev-b",
-          "evidence_type": "verified"
+          "date": "2024-09-02", "author": "sample-dev-b", "evidence_type": "verified"
         },
         {
-          "id": "ev5",
-          "type": "commit",
+          "id": "ev5", "type": "commit",
           "title": "Bump upstream-client to 2.3",
           "snippet": "Dependency bump.",
           "url": "https://example.com/synthetic/commit/def5678",
-          "date": "2024-09-05",
-          "author": "sample-dev-b",
-          "evidence_type": "inferred"
+          "date": "2024-09-05", "author": "sample-dev-b", "evidence_type": "inferred"
         }
       ],
       "who_to_ask": null,
@@ -624,13 +384,8 @@
       "drift_alert": {
         "label": "Possibly outdated. Verify.",
         "evidence_type": "heuristic",
-        "original_reason_evidence": [
-          "ev3"
-        ],
-        "later_change_evidence": [
-          "ev4",
-          "ev5"
-        ],
+        "original_reason_evidence": ["ev3"],
+        "later_change_evidence": ["ev4", "ev5"],
         "workaround_still_in_code": {
           "checked": true,
           "path": "src/net/retry.py",
@@ -642,57 +397,27 @@
         ]
       },
       "dna": null,
-      "code_snippet": {
-        "source": "repo_code",
-        "note": "Code as it exists in the repo. Not an AI summary.",
-        "path": "src/net/retry.py",
-        "language": "python",
-        "start_line": 12,
-        "end_line": 22,
-        "introduced_in_evidence_id": "ev1",
-        "text": "# TEMP: workaround for flaky upstream API (#41)\nMAX_ATTEMPTS = 3\n\ndef fetch_with_retry(call):\n    for attempt in range(MAX_ATTEMPTS):\n        try:\n            return call()\n        except ConnectionError:\n            if attempt == MAX_ATTEMPTS - 1:\n                raise"
-      },
-      "ai_code_summary": null,
       "connected_items": [],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     },
     "insufficient_evidence": {
       "status": "insufficient_evidence",
       "message": "Insufficient evidence in the repository.",
       "mode": "why",
       "routed_mode": null,
-      "item": {
-        "id": "file:src/utils/helpers.py",
-        "kind": "file",
-        "label": "src/utils/helpers.py"
-      },
+      "item": { "id": "file:src/utils/helpers.py", "kind": "file", "label": "src/utils/helpers.py" },
       "answer": [],
-      "confidence": {
-        "level": "none",
-        "basis": {
-          "verified_links": 0,
-          "inferred_links": 0,
-          "distinct_sources": 0
-        }
-      },
+      "confidence": { "level": "none" },
       "evidence": [],
       "who_to_ask": null,
       "decision": null,
       "timeline": [],
       "drift_alert": null,
       "dna": null,
-      "code_snippet": null,
-      "ai_code_summary": null,
       "connected_items": [],
       "connected_note": "Based on repo history only, not a prediction.",
-      "limitations": [
-        "Bounded slice of history",
-        "Design docs not ingested"
-      ]
+      "limitations": ["Bounded slice of history", "Design docs not ingested"]
     }
   }
 }

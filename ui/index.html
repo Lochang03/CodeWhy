@@ -32,6 +32,7 @@
   .inferred { color:var(--inferred); border-style:dashed; }
   .unknown { color:var(--unknown); border-style:dotted; }
   .heuristic { color:var(--heuristic); border-style:double; }
+  .plain { color:var(--text); border-style:solid; border-color:var(--line); }
   .refs a { font-size:13px; margin-left:4px; }
   .muted { color:var(--muted); font-size:14px; }
   .abstain { border:2px solid var(--warn); color:var(--warn); font-weight:600; font-size:18px; }
@@ -39,10 +40,8 @@
   .drift .title { font-size:18px; font-weight:700; color:var(--heuristic); margin-bottom:6px; }
   .tl { border-left:3px solid var(--line); margin-left:6px; padding-left:14px; }
   .tl .when { font-weight:600; }
-  pre { background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px; overflow-x:auto; font-size:13px; margin:6px 0 0; }
   a { color:inherit; }
   ul { padding-left:0; list-style:none; margin:0; }
-  .plain { color:var(--text); border-style:solid; border-color:var(--line); }
 </style>
 </head>
 <body>
@@ -52,7 +51,7 @@
 
   <h2>Repository</h2>
   <div class="row">
-    <input id="repo-input" type="text" value="https://github.com/sample-org/sample-repo" aria-label="GitHub repository URL">
+    <input id="repo-input" type="text" placeholder="https://github.com/owner/repo" aria-label="GitHub repository URL">
     <button id="analyze" class="primary">Analyze</button>
   </div>
   <div id="repo-msg"></div>
@@ -91,6 +90,7 @@ const repoMsg = document.getElementById('repo-msg');
 const overviewBox = document.getElementById('overview');
 const itemsBox = document.getElementById('items');
 let DATA = null;
+let REPOS = [];
 let state = { repo: null, item: null, mode: 'why' };
 
 // ---------- small helpers ----------
@@ -129,7 +129,12 @@ function parseRepo(text) {
   return m ? m[1] + '/' + m[2] : null;
 }
 
-// ---------- the ONE place that gets answers (swap this for POST /ask later) ----------
+// ---------- data loading (swap these for the real API later) ----------
+async function loadRepos() {               // later: fetch(API_BASE + '/repos')
+  return DATA.repos || [];
+}
+
+// the ONE place that gets answers (later: POST /ask)
 async function getAnswer(repo, item, mode) {
   const ex = DATA.ask_examples || {};
   if (item.id === 'file:src/net/retry.py') return ex[mode] || null;
@@ -154,14 +159,10 @@ function showAnswer(r, byId) {
     app.appendChild(card);
   });
 }
-function showConfidence(r) {
+function showConfidence(r) {               // level only; the backend computes the basis
   if (!r.confidence) return;
   section('Confidence');
-  const b = r.confidence.basis;
-  let t = '';
-  if (Array.isArray(b)) t = b.join('; ');
-  else if (b) t = b.verified_links + ' verified links, ' + b.inferred_links + ' inferred links, ' + b.distinct_sources + ' sources';
-  app.appendChild(el('div', 'card', 'Level: ' + r.confidence.level + (t ? ' (' + t + ')' : '')));
+  app.appendChild(el('div', 'card', 'Level: ' + r.confidence.level));
 }
 function showDecision(r) {
   if (!r.decision) return;
@@ -177,14 +178,6 @@ function showWho(r) {
   let t = who.login + (who.reason ? ': ' + who.reason : '');
   t += who.still_active === false ? ' (not active recently)' : who.still_active ? ' (active)' : '';
   app.appendChild(el('div', 'card', t));
-}
-function showSnippet(r) {
-  if (!r.code_snippet) return;
-  section('Code');
-  const c = el('div', 'card');
-  c.appendChild(el('div', 'muted', r.code_snippet.path + ' · lines ' + r.code_snippet.start_line + '-' + r.code_snippet.end_line + ' · ' + (r.code_snippet.note || '')));
-  c.appendChild(el('pre', null, r.code_snippet.text));
-  app.appendChild(c);
 }
 function showSources(r) {
   if (!(r.evidence || []).length) return;
@@ -354,11 +347,11 @@ async function renderResult() {
   if (key === 'history') {
     showTimeline(r, byId); showDecision(r); showConfidence(r); showSources(r);
   } else if (key === 'still_needed') {
-    showDrift(r, byId); showAnswer(r, byId); showConfidence(r); showDecision(r); showSnippet(r); showSources(r);
+    showDrift(r, byId); showAnswer(r, byId); showConfidence(r); showDecision(r); showSources(r);
   } else if (key === 'dna') {
-    showDna(r, byId); showSnippet(r); showConnected(r); showSources(r);
+    showDna(r, byId); showConnected(r); showSources(r);
   } else {
-    showAnswer(r, byId); showConfidence(r); showDecision(r); showWho(r); showSnippet(r); showSources(r); showConnected(r);
+    showAnswer(r, byId); showConfidence(r); showDecision(r); showWho(r); showSources(r); showConnected(r);
   }
   showLimitations(r);
 }
@@ -376,11 +369,11 @@ function analyze() {
     repoMsg.appendChild(el('div', 'card abstain', 'Please paste a GitHub URL like https://github.com/owner/repo'));
     return;
   }
-  const known = (DATA.repos || []).find(r => r.repo.toLowerCase() === repo.toLowerCase() && r.cached);
+  const known = REPOS.find(r => r.repo.toLowerCase() === repo.toLowerCase() && r.cached);
   if (!known) {
     repoMsg.appendChild(el('div', 'card abstain', 'Not cached: ' + repo));
     repoMsg.appendChild(el('p', 'muted', 'The demo works only with repositories that were fetched in advance. Try: ' +
-      (DATA.repos || []).filter(r => r.cached).map(r => r.repo).join(', ')));
+      REPOS.filter(r => r.cached).map(r => r.repo).join(', ')));
     return;
   }
   state.repo = known.repo;
@@ -393,6 +386,7 @@ async function load() {
     const res = await fetch(DATA_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     DATA = await res.json();
+    REPOS = await loadRepos();
     if (DATA._synthetic_notice || DATA._mock) {
       banner.className = 'banner';
       banner.textContent = 'Synthetic sample data. Not a real repository.';
