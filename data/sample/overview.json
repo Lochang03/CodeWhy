@@ -1,0 +1,20 @@
+{
+  "repo": "sample/synthetic",
+  "ingested": {
+    "commits": 150,
+    "pulls": 80,
+    "issues": 80,
+    "fetched_at": "2026-10-23T00:00:00Z",
+    "note": "Bounded slice, not the full history. SYNTHETIC SAMPLE DATA: not a real repository finding"
+  },
+  "counts": {
+    "total_items": 10,
+    "explained": 6,
+    "unknown": 4,
+    "unchanged_since_decision": 2,
+    "changed_since_decision": 3,
+    "superseded": 1,
+    "possibly_outdated": 1
+  },
+  "_mock": true
+}

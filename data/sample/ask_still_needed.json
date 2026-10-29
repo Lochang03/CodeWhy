@@ -1,0 +1,104 @@
+{
+  "status": "answered",
+  "message": null,
+  "mode": "still_needed",
+  "routed_mode": null,
+  "item": {
+    "id": "file:src/net/retry.py",
+    "kind": "file",
+    "label": "src/net/retry.py"
+  },
+  "answer": [
+    {
+      "text": "The cap was added for a gateway limitation (ev2, ev1).",
+      "evidence_ids": [
+        "ev1",
+        "ev2"
+      ],
+      "label": "verified"
+    },
+    {
+      "text": "A later issue says the gateway now queues bursts; whether the cap is now unnecessary is not verified.",
+      "evidence_ids": [
+        "ev4"
+      ],
+      "label": "inferred"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": {
+      "verified_links": 3,
+      "inferred_links": 0,
+      "distinct_sources": 2
+    }
+  },
+  "evidence": [
+    {
+      "id": "ev1",
+      "type": "commit",
+      "title": "Limit retries to 3",
+      "snippet": "Cap retries at 3: upstream gateway drops bursts.",
+      "url": "https://example.com/commit/1",
+      "date": "2021-06-10",
+      "author": "dev-a",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev2",
+      "type": "issue",
+      "title": "Gateway drops bursty clients",
+      "snippet": "Gateway returns 502 under bursts.",
+      "url": "https://example.com/issue/2",
+      "date": "2021-06-01",
+      "author": "dev-b",
+      "evidence_type": "verified"
+    },
+    {
+      "id": "ev4",
+      "type": "issue",
+      "title": "Gateway burst handling fixed (closed)",
+      "snippet": "Gateway now queues bursts.",
+      "url": "https://example.com/issue/4",
+      "date": "2022-11-20",
+      "author": "dev-c",
+      "evidence_type": "verified"
+    }
+  ],
+  "who_to_ask": null,
+  "decision": {
+    "summary": "Cap retries at 3",
+    "date": "2021-06-10",
+    "status": "possibly_expired",
+    "superseded_by": null
+  },
+  "timeline": [],
+  "drift_alert": {
+    "label": "Possibly outdated. Verify.",
+    "evidence_type": "heuristic",
+    "original_reason_evidence": [
+      "ev1",
+      "ev2"
+    ],
+    "later_change_evidence": [
+      "ev4"
+    ],
+    "workaround_still_in_code": {
+      "checked": true,
+      "path": "src/net/retry.py",
+      "note": "MAX_RETRIES = 3 still present"
+    },
+    "needs_human_verification": [
+      "Confirm the deployed gateway version includes the fix",
+      "Test removing the cap in staging"
+    ]
+  },
+  "dna": null,
+  "connected_items": [],
+  "connected_note": null,
+  "limitations": [
+    "SYNTHETIC SAMPLE DATA: not a real repository finding",
+    "Bounded slice of history"
+  ],
+  "_mock": true
+}
