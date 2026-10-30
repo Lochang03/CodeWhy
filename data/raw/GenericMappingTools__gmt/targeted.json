@@ -1,0 +1,36 @@
+{
+  "repo": "GenericMappingTools/gmt",
+  "fetched_at": "2026-10-26T14:27:43.604440+00:00",
+  "issues": [],
+  "pulls": [
+    {
+      "number": 8461,
+      "title": "GMT_Call_Module: Fix the debugging message when a list of argument strings is passed",
+      "body": "**Description of proposed changes**\r\n\r\nAPI function `GMT_Call_Module` can accept either a whitespace-separate argument string or a list of argument strings. \r\n\r\nWhen a list of argument strings is passed, we need to convert `args` to a string first before printing it out.\r\n\r\nFixes https://github.com/GenericMappingTools/pygmt/issues/3205.",
+      "state": "closed",
+      "merged_at": "2024-04-27T11:32:25Z",
+      "created_at": "2024-04-27T10:48:06Z",
+      "closed_at": "2024-04-27T11:32:25Z",
+      "user": {
+        "login": "seisman",
+        "url": "https://github.com/seisman"
+      },
+      "url": "https://github.com/GenericMappingTools/gmt/pull/8461",
+      "merge_commit_sha": "7845f5e2cf13bf2160b2c0e467f7095005bf5fb3",
+      "labels": [
+        "bug"
+      ],
+      "comments": [],
+      "files": [
+        {
+          "filename": "src/gmt_api.c",
+          "status": "modified",
+          "previous_filename": null
+        }
+      ]
+    }
+  ],
+  "commits": [],
+  "errors": [],
+  "api_requests": 4
+}
