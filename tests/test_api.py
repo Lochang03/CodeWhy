@@ -49,3 +49,17 @@ def test_free_requires_question():
 
 def test_bad_mode_rejected():
     assert c.post("/ask", json={"repo": SAMPLE, "item_id": ITEM, "mode": "nope"}).status_code == 422
+
+
+def test_real_cached_repo_is_answered_by_the_engine(tmp_path, monkeypatch):
+    import json
+    import api.main as m
+    from tests.test_engine import make_raw
+    make_raw(tmp_path)
+    (tmp_path / "o__pyg" / "meta.json").write_text(json.dumps({"repo": "o/pyg", "fetched_at": "2026-10-26T00:00:00+00:00", "counts": {"commits": 3, "pulls": 1, "issues": 1}}), encoding="utf-8")
+    monkeypatch.setattr(m, "RAW_DIR", tmp_path)
+    m._GRAPHS.clear()
+    body = c.post("/ask", json={"repo": "o/pyg", "item_id": "file:pkg/session.py", "mode": "why"}).json()
+    assert body["status"] == "answered" and not body.get("_mock") and validate(body) == []
+    assert c.get("/repos/o/pyg/overview").json()["counts"]["explained"] == 1
+    assert c.get("/repos/o/pyg/items?q=session").json()["items"][0]["label"] == "pkg/session.py"
