@@ -1,9 +1,8 @@
 """CodeWhy API (schema v2, see docs/graph-schema.md).
 
 Run:  uvicorn api.main:app --reload --port 8000     Docs: http://localhost:8000/docs
-Until the real graph engine exists, only the synthetic repo 'sample/synthetic' is served
-(every such response carries "_mock": true). Real cached repos return 501 on purpose
-rather than faking an answer.
+Cached repos are answered by graph/engine.py (no LLM). The synthetic repo 'sample/synthetic' is served from data/sample
+(every such response carries "_mock": true). An uncached repo returns 404 "not cached".
 """
 import json
 from pathlib import Path
@@ -13,6 +12,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from graph import engine
 from qa import mock_engine
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -35,11 +35,21 @@ def cached_repos():
     return repos
 
 
+_GRAPHS = {}
+
+
+def _graph(repo: str):
+    if repo not in _GRAPHS:
+        _GRAPHS[repo] = engine.load_graph(repo, RAW_DIR)
+    return _GRAPHS[repo]
+
+
 def _check_repo(repo: str):
+    """'mock' for the synthetic sample, 'real' for a cached repo, 404 otherwise."""
     if repo == mock_engine.SAMPLE_REPO:
         return "mock"
     if any(r["repo"] == repo for r in cached_repos()):
-        raise HTTPException(501, "Graph engine not built yet for real repos.")
+        return "real"
     raise HTTPException(404, f"{repo} is not cached. The demo only works on cached repos.")
 
 
@@ -57,14 +67,18 @@ def list_repos():
 
 @app.get("/repos/{owner}/{repo}/overview")
 def overview(owner: str, repo: str):
-    _check_repo(f"{owner}/{repo}")
-    return mock_engine.overview()
+    name = f"{owner}/{repo}"
+    if _check_repo(name) == "mock":
+        return mock_engine.overview()
+    return engine.overview(_graph(name))
 
 
 @app.get("/repos/{owner}/{repo}/items")
 def items(owner: str, repo: str, q: str = ""):
-    _check_repo(f"{owner}/{repo}")
-    return mock_engine.items(q)
+    name = f"{owner}/{repo}"
+    if _check_repo(name) == "mock":
+        return mock_engine.items(q)
+    return engine.items(_graph(name), q)
 
 
 class AskRequest(BaseModel):
@@ -78,5 +92,6 @@ class AskRequest(BaseModel):
 def ask(req: AskRequest):
     if req.mode == "free" and not (req.question or "").strip():
         raise HTTPException(422, "question is required when mode = free")
-    _check_repo(req.repo)
-    return mock_engine.ask(req.item_id, req.mode, req.question)
+    if _check_repo(req.repo) == "mock":
+        return mock_engine.ask(req.item_id, req.mode, req.question)
+    return engine.ask(_graph(req.repo), req.item_id, req.mode, req.question)
