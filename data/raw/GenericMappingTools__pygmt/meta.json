@@ -1,0 +1,16 @@
+{
+  "repo": "GenericMappingTools/pygmt",
+  "fetched_at": "2026-10-26T13:15:00.925491+00:00",
+  "limits": {
+    "max_commits": 150,
+    "max_prs": 80,
+    "max_issues": 80
+  },
+  "counts": {
+    "commits": 150,
+    "pulls": 80,
+    "issues": 80
+  },
+  "api_requests": 397,
+  "note": "Bounded slice: most recent items only, not the full history."
+}

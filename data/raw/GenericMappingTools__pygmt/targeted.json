@@ -1,0 +1,130 @@
+{
+  "repo": "GenericMappingTools/pygmt",
+  "fetched_at": "2026-10-27T14:23:36.923750+00:00",
+  "issues": [
+    {
+      "number": 3205,
+      "title": "GMT prints incorrect command line string if a list of arguments is passed",
+      "body": "This is an upstream GMT bug, which affect us after we refactored wrappers to pass a list of argument strings in PR #3139. To reproduce the bug, run:\r\n```python\r\n>>> import pygmt\r\n>>> pygmt.config(GMT_VERBOSE=\"d\")\r\ngmtset [DEBUG]: gmtlib_get_graphics_item: Fig: 0 Subplot: 2 Panel: () Inset: 0\r\n>>> fig = pygmt.Figure()\r\npygmt-session [DEBUG]: Exit:  gmt_reload_settings\r\npygmt-session [DEBUG]: Enter: gmtlib_plot_C_format\r\npygmt-session [DEBUG]: Exit:  gmtlib_plot_C_format\r\npygmt-session [DEBUG]: Enter: gmtinit_get_history\r\npygmt-session [DEBUG]: gmtlib_get_graphics_item: Fig: 0 Subplot: 2 Panel: () Inset: 0\r\npygmt-session [DEBUG]: Initialize FFTW with 80 threads.\r\npygmt-session [DEBUG]: GMT_Create_Session initialized GMT structure\r\npygmt-session [DEBUG]: Shared Library # 0 (core). Path = /home/seisman/opt/miniconda/envs/pygmt/lib/libgmt.so\r\npygmt-session [DEBUG]: Loading GMT plugins from: /home/seisman/opt/miniconda/envs/pygmt/lib/gmt/plugins\r\npygmt-session [DEBUG]: Shared Library # 1 (supplements). Path = /home/seisman/opt/miniconda/envs/pygmt/lib/gmt/plugins/supplements.so\r\npygmt-session [DEBUG]: GMT now running in modern mode [Session ID = 127951]\r\nException ignored on calling ctypes callback function: <function Session.create.<locals>.print_func at 0x7fa3da132480>\r\nTraceback (most recent call last):\r\n  File \"/home/seisman/OSS/gmt/pygmt/pygmt/clib/session.py\", line 387, in print_func\r\n    message = message.decode().strip()\r\n              ^^^^^^^^^^^^^^^^\r\nUnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 59: invalid start byte\r\npygmt-session [DEBUG]: Revised options: 0540c3cbdfa249479128dd18720134da -\r\nfigure [DEBUG]: No figure file /home/seisman/.gmt/sessions/gmt_session.127951/gmt.figures - nothing to do\r\nfigure [DEBUG]: New figure: 1\t0540c3cbdfa249479128dd18720134da\t-\r\n```\r\nThe exception is because GMT incorrectly outputs a string like below to stderr:\r\n```\r\npygmt-session [DEBUG]: GMT_Call_Command string: gmt figure \\x10l7\"\\xec\\x7f\\n\r\n```\r\nHere, the argument `\\x10l7\"\\xec\\x7f\\n` makes no sense. \r\n\r\nUpstream PR https://github.com/GenericMappingTools/gmt/pull/8461 should fix the bug.",
+      "state": "closed",
+      "created_at": "2024-04-27T10:47:40Z",
+      "closed_at": "2024-04-27T11:32:26Z",
+      "user": {
+        "login": "seisman",
+        "url": "https://github.com/seisman"
+      },
+      "url": "https://github.com/GenericMappingTools/pygmt/issues/3205",
+      "labels": [
+        "bug",
+        "upstream"
+      ],
+      "comments": [
+        {
+          "id": 2080460847,
+          "user": {
+            "login": "seisman",
+            "url": "https://github.com/seisman"
+          },
+          "body": "The upstream PR has been merged. I don't think we can have a workaround in PyGMT, since we definitely don't want to revert all changes in PR #3139. Fortunately, the upstream bug only affects users who care about the `GMT_Call_Command` string in the debugging message. ",
+          "created_at": "2024-04-27T11:34:52Z",
+          "url": "https://github.com/GenericMappingTools/pygmt/issues/3205#issuecomment-2080460847"
+        }
+      ],
+      "events": [
+        {
+          "event": "labeled",
+          "created_at": "2024-04-27T10:48:19Z",
+          "actor": "seisman",
+          "commit_id": null,
+          "commit_url": null,
+          "label": "bug"
+        },
+        {
+          "event": "labeled",
+          "created_at": "2024-04-27T10:48:19Z",
+          "actor": "seisman",
+          "commit_id": null,
+          "commit_url": null,
+          "label": "upstream"
+        },
+        {
+          "event": "milestoned",
+          "created_at": "2024-04-27T10:48:24Z",
+          "actor": "seisman",
+          "commit_id": null,
+          "commit_url": null,
+          "label": null
+        },
+        {
+          "event": "closed",
+          "created_at": "2024-04-27T11:32:26Z",
+          "actor": "seisman",
+          "commit_id": null,
+          "commit_url": null,
+          "label": null
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 3367,
+      "title": "Patch the callback print function to suppress the UnicodeDecodeError",
+      "body": "**Description of proposed changes**\r\n\r\nSee https://github.com/GenericMappingTools/pygmt/issues/3205 for the original issue and https://github.com/GenericMappingTools/gmt/pull/8461 for the upstream fix.\r\n\r\nWe can do nothing for old GMT versions but the UnicodeDecodeError error in debugging messages looks scaring. So at least we should catch the exception to suppress the error.\r\n\r\nNo `UnicodeDecodeError` error after this PR:\r\n\r\n```\r\nIn [1]: import pygmt\r\n\r\nIn [2]: pygmt.config(GMT_VERBOSE=\"d\")\r\ngmtset [DEBUG]: gmtlib_get_graphics_item: Fig: 0 Subplot: 2 Panel: () Inset: 0\r\nOut[2]: <pygmt.src.config.config at 0x13c8b8e90>\r\n\r\nIn [3]: fig = pygmt.Figure()\r\npygmt-session [DEBUG]: Exit:  gmt_reload_settings\r\npygmt-session [DEBUG]: Enter: gmtlib_plot_C_format\r\npygmt-session [DEBUG]: Exit:  gmtlib_plot_C_format\r\npygmt-session [DEBUG]: Enter: gmtinit_get_history\r\npygmt-session [DEBUG]: gmtlib_get_graphics_item: Fig: 0 Subplot: 2 Panel: () Inset: 0\r\npygmt-session [DEBUG]: Initialize FFTW with 8 threads.\r\npygmt-session [DEBUG]: GMT_Create_Session initialized GMT structure\r\npygmt-session [DEBUG]: Shared Library # 0 (core). Path = /Users/seisman/opt/miniconda/envs/pygmt/lib/libgmt.dylib\r\npygmt-session [DEBUG]: Loading GMT plugins from: /Users/seisman/opt/miniconda/envs/pygmt/lib/gmt/plugins\r\npygmt-session [DEBUG]: Shared Library # 1 (supplements). Path = /Users/seisman/opt/miniconda/envs/pygmt/lib/gmt/plugins/supplements.so\r\npygmt-session [DEBUG]: GMT now running in modern mode [Session ID = 13594]\r\npygmt-session [DEBUG]: Revised options: 03e3017e1ead48cc8d003fcbd5e98b9f -\r\nfigure [DEBUG]: No figure file /Users/seisman/.gmt/sessions/gmt_session.13594/gmt.figures - nothing to do\r\nfigure [DEBUG]: New figure: 1\t03e3017e1ead48cc8d003fcbd5e98b9f\t-\r\n```\r\n",
+      "state": "closed",
+      "merged_at": "2024-08-05T02:05:45Z",
+      "created_at": "2024-08-04T03:24:00Z",
+      "closed_at": "2024-08-05T02:05:45Z",
+      "user": {
+        "login": "seisman",
+        "url": "https://github.com/seisman"
+      },
+      "url": "https://github.com/GenericMappingTools/pygmt/pull/3367",
+      "merge_commit_sha": "8859ca368a33c83631a0f95f0d23b9cde99920a7",
+      "labels": [
+        "maintenance"
+      ],
+      "comments": [
+        {
+          "id": 2267278634,
+          "user": {
+            "login": "seisman",
+            "url": "https://github.com/seisman"
+          },
+          "body": "The failures in the \"GMT Dev Tests\" CI are likely caused by shapely dev issue https://github.com/shapely/shapely/issues/2098.",
+          "created_at": "2024-08-04T03:35:27Z",
+          "url": "https://github.com/GenericMappingTools/pygmt/pull/3367#issuecomment-2267278634"
+        }
+      ],
+      "files": [
+        {
+          "filename": "pygmt/clib/session.py",
+          "status": "modified",
+          "previous_filename": null
+        }
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "sha": "8859ca368a33c83631a0f95f0d23b9cde99920a7",
+      "message": "Patch the callback print function to suppress the UnicodeDecodeError (#3367)",
+      "author_login": "seisman",
+      "author_name": "Dongdong Tian",
+      "date": "2024-08-05T02:05:45Z",
+      "url": "https://github.com/GenericMappingTools/pygmt/commit/8859ca368a33c83631a0f95f0d23b9cde99920a7",
+      "parents": [
+        "53114b29444b02d9e4d62f0c478f9d642bbeb7b6"
+      ],
+      "files": [
+        {
+          "filename": "pygmt/clib/session.py",
+          "status": "modified",
+          "previous_filename": null
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "api_requests": 8
+}

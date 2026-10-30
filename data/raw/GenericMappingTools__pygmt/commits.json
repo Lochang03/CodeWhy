@@ -1,0 +1,4187 @@
+[
+  {
+    "sha": "e96f272ebfcc71b12298b8b9ad1914ef747c1be5",
+    "message": "Box, Position: Fix validation of shade_offset and refpoint (#4963)",
+    "author_login": "tashakaggarwal",
+    "author_name": "Tashak Aggarwal",
+    "date": "2026-10-25T13:55:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/e96f272ebfcc71b12298b8b9ad1914ef747c1be5",
+    "parents": [
+      "9f5b4c6fe43dd98b9c61a5d8be2447bc18b676ff"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/params/box.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/params/position.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_params_box.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_params_position.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "9f5b4c6fe43dd98b9c61a5d8be2447bc18b676ff",
+    "message": "Figure.pygmtlogo: Clarify the logo is licensed under CC BY 4.0 (#4956)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-24T15:24:29Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/9f5b4c6fe43dd98b9c61a5d8be2447bc18b676ff",
+    "parents": [
+      "832c69a1fcc28cefbf2a01eb8d7ed9316250b739"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/embellishments/pygmtlogo.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/pygmtlogo.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "832c69a1fcc28cefbf2a01eb8d7ed9316250b739",
+    "message": "Fix the xarray homepage URL (#4959)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-22T14:45:00Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/832c69a1fcc28cefbf2a01eb8d7ed9316250b739",
+    "parents": [
+      "94ee1d1ac3e66a27cc6fc04fa798bccff1086751"
+    ],
+    "files": [
+      {
+        "filename": ".gitignore",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/ecosystem.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "94ee1d1ac3e66a27cc6fc04fa798bccff1086751",
+    "message": "Revert \"Fix the key from start to number in CITATION.cff  (#4957)\" (#4958)\n\nThis reverts commit 453f0f239c0e1d3d72f54357d6db6c6c5144f9e0.",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-22T10:39:16Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/94ee1d1ac3e66a27cc6fc04fa798bccff1086751",
+    "parents": [
+      "453f0f239c0e1d3d72f54357d6db6c6c5144f9e0"
+    ],
+    "files": [
+      {
+        "filename": "CITATION.cff",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "453f0f239c0e1d3d72f54357d6db6c6c5144f9e0",
+    "message": "Fix the key from start to number in CITATION.cff  (#4957)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-22T08:34:19Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/453f0f239c0e1d3d72f54357d6db6c6c5144f9e0",
+    "parents": [
+      "3ee2c7d990d1c3504aeadcd10c19e6c7054f29d3"
+    ],
+    "files": [
+      {
+        "filename": "CITATION.cff",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3ee2c7d990d1c3504aeadcd10c19e6c7054f29d3",
+    "message": "Fix the article number key and affiliation of Wei Ji in CITATION.cff (#4955)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-22T07:14:48Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3ee2c7d990d1c3504aeadcd10c19e6c7054f29d3",
+    "parents": [
+      "5a825d624fec9babde0635836be0104b3febdbbe"
+    ],
+    "files": [
+      {
+        "filename": "CITATION.cff",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "5a825d624fec9babde0635836be0104b3febdbbe",
+    "message": "Figure.histogram: Support Pythonic arguments for the 'histtype' parameter (#4912)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-22T00:18:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/5a825d624fec9babde0635836be0104b3febdbbe",
+    "parents": [
+      "ec0a9cdd90bc7b9a61fbd0a48ae71b959b7f77fa"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/histograms/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/histograms/scatter_and_histograms.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/cartesian_histograms.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/grid_equalization.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ec0a9cdd90bc7b9a61fbd0a48ae71b959b7f77fa",
+    "message": "Build(deps): Bump actions/create-github-app-token from 3.2.0 to 3.3.0 (#4954)\n\nBumps [actions/create-github-app-token](https://github.com/actions/create-github-app-token) from 3.2.0 to 3.3.0.\n- [Release notes](https://github.com/actions/create-github-app-token/releases)\n- [Changelog](https://github.com/actions/create-github-app-token/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/actions/create-github-app-token/compare/bcd2ba49218906704ab6c1aa796996da409d3eb1...64ab729a6294000f5aa4a4bc0b73d1f32bc45510)\n\n---\nupdated-dependencies:\n- dependency-name: actions/create-github-app-token\n  dependency-version: 3.3.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-10-21T00:37:54Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ec0a9cdd90bc7b9a61fbd0a48ae71b959b7f77fa",
+    "parents": [
+      "33acccd3f41c59ac10d1db6494df3e5a4169c708"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/format-command.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "33acccd3f41c59ac10d1db6494df3e5a4169c708",
+    "message": "Build(deps): Bump CodSpeedHQ/action from 5.2.1 to 5.4.2 (#4953)\n\nBumps [CodSpeedHQ/action](https://github.com/codspeedhq/action) from 5.2.1 to 5.4.2.\n- [Release notes](https://github.com/codspeedhq/action/releases)\n- [Changelog](https://github.com/CodSpeedHQ/action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codspeedhq/action/compare/373d6868929f444bc08d901fd0eb0ad52a8875ea...f842b9a3ffe213dbb81768fd7f7eeb4dfcf1c369)\n\n---\nupdated-dependencies:\n- dependency-name: CodSpeedHQ/action\n  dependency-version: 5.4.2\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-10-21T00:36:01Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/33acccd3f41c59ac10d1db6494df3e5a4169c708",
+    "parents": [
+      "4895dd4e05d0c436f940f621f26ff822cf9530b0"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4895dd4e05d0c436f940f621f26ff822cf9530b0",
+    "message": "Add support for Python 3.15 (#4949)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-19T03:58:23Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4895dd4e05d0c436f940f621f26ff822cf9530b0",
+    "parents": [
+      "b7b695cd620c3d4bac01af6904d4d3540bce285d"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/format-command.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/type_checks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "ci/requirements/docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pyproject.toml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "b7b695cd620c3d4bac01af6904d4d3540bce285d",
+    "message": "Figure.velo: Add inline example (#4944)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-10-18T23:39:58Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/b7b695cd620c3d4bac01af6904d4d3540bce285d",
+    "parents": [
+      "4d05a6709283bd7ab1a92518eb08a28a9784e43f"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/velo.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4d05a6709283bd7ab1a92518eb08a28a9784e43f",
+    "message": "Figure.rose: Add inline example (#4945)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-10-18T23:38:40Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4d05a6709283bd7ab1a92518eb08a28a9784e43f",
+    "parents": [
+      "295874cfa0542ee3cf96f9b1aa01a07e5492c8e5"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/rose.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "295874cfa0542ee3cf96f9b1aa01a07e5492c8e5",
+    "message": "DOC: Change from \"corteva\" to \"vylor\" in rioxarray URLs (#4952)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-10-18T17:21:35Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/295874cfa0542ee3cf96f9b1aa01a07e5492c8e5",
+    "parents": [
+      "974d950681b4ee73f6d852f42c1e57b28ee76f84"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/ecosystem.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "974d950681b4ee73f6d852f42c1e57b28ee76f84",
+    "message": "Add dependency groups to pyproject.toml following PEP 735 (#4950)\n\nCo-authored-by: Wei Ji <23487320+weiji14@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-16T00:10:43Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/974d950681b4ee73f6d852f42c1e57b28ee76f84",
+    "parents": [
+      "5986d82402bd69d913d886bf372062b2a6cfc645"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/format-command.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/type_checks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pyproject.toml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "5986d82402bd69d913d886bf372062b2a6cfc645",
+    "message": "Build(deps): Bump actions/download-artifact from 8.0.1 to 8.0.2 (#4947)\n\nBumps [actions/download-artifact](https://github.com/actions/download-artifact) from 8.0.1 to 8.0.2.\n- [Release notes](https://github.com/actions/download-artifact/releases)\n- [Commits](https://github.com/actions/download-artifact/compare/3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c...9000827ccba6bdab643e8b6fd33ac0654aef8333)\n\n---\nupdated-dependencies:\n- dependency-name: actions/download-artifact\n  dependency-version: 8.0.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-10-14T23:18:57Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/5986d82402bd69d913d886bf372062b2a6cfc645",
+    "parents": [
+      "de96e6498bba1be21bc1901a71f9de8b9d57e726"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "de96e6498bba1be21bc1901a71f9de8b9d57e726",
+    "message": "Build(deps): Bump actions/upload-artifact from 7.0.1 to 7.0.2 (#4948)\n\nBumps [actions/upload-artifact](https://github.com/actions/upload-artifact) from 7.0.1 to 7.0.2.\n- [Release notes](https://github.com/actions/upload-artifact/releases)\n- [Commits](https://github.com/actions/upload-artifact/compare/043fb46d1a93c77aae656e7c1c64a875d1fc6a0a...cf430e030ddbb5b0abf93d22962f4752f3646cd9)\n\n---\nupdated-dependencies:\n- dependency-name: actions/upload-artifact\n  dependency-version: 7.0.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-10-14T23:18:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/de96e6498bba1be21bc1901a71f9de8b9d57e726",
+    "parents": [
+      "3dc7662d8c2ae8b9784619fbad169ba690ebdfcd"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3dc7662d8c2ae8b9784619fbad169ba690ebdfcd",
+    "message": "Figure.histogram: Improved syntax for filling bars by position/value (#4886)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-14T11:39:02Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3dc7662d8c2ae8b9784619fbad169ba690ebdfcd",
+    "parents": [
+      "6b0ab0c674366f110e2e33e01841e6af05bc2c35"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_histogram_fill.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "6b0ab0c674366f110e2e33e01841e6af05bc2c35",
+    "message": "Improve comments/descriptions of inline examples for plotting methods (#4939)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-11T15:08:02Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/6b0ab0c674366f110e2e33e01841e6af05bc2c35",
+    "parents": [
+      "ffb78cf6edd0736916f2e552848715deed72bb29"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/basemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/choropleth.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/coast.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/colorbar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/contour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/directional_rose.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/fill_between.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcontour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdimage.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/hlines.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/image.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/magnetic_rose.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/paragraph.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/plot.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/scalebar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/shift_origin.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/tilemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/vlines.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/wiggle.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ffb78cf6edd0736916f2e552848715deed72bb29",
+    "message": "Fix ICN001 (unconventional-import-alias) violations in ruff v0.17.0 (#4946)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-10T10:06:40Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ffb78cf6edd0736916f2e552848715deed72bb29",
+    "parents": [
+      "c55cfcc4461f4bba1bd64d1dba286866333f4a20"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/embellishments/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/symbols/datetime_inputs.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/date_time_charts.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/_typing.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_clib_put_vector.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_clib_to_numpy.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_clib_vectors_to_arrays.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_plot.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_solar.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c55cfcc4461f4bba1bd64d1dba286866333f4a20",
+    "message": "CI: Improve the 'Style Checks' workflow to ensure 'Examples' heading is used and fix violations (#4940)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-10T03:56:10Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c55cfcc4461f4bba1bd64d1dba286866333f4a20",
+    "parents": [
+      "fff7502d4ae6022be10eedfa6cb116a04e281400"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/blockm.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/coast.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/colorbar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/dimfilter.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grd2cpt.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grd2xyz.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdclip.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcontour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcut.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdfill.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdgradient.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdhisteq.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdimage.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdlandmask.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdmask.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdproject.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdsample.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdtrack.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdvolume.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/nearneighbor.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/select.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/sph2grd.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/sphdistance.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/sphinterpolate.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/surface.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/xyz2grd.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "fff7502d4ae6022be10eedfa6cb116a04e281400",
+    "message": "DOC: Define \"Aliases\" as a custom section heading to simplify the docstrings (#4942)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-09T02:27:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/fff7502d4ae6022be10eedfa6cb116a04e281400",
+    "parents": [
+      "ebc2c8b03799b07237183f4018cf1e98ab089f23"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/helpers/decorators.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/basemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/choropleth.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdclip.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdfill.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdfilter.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdlandmask.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdmask.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdpaste.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/image.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/legend.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/logo.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/sphinterpolate.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/which.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ebc2c8b03799b07237183f4018cf1e98ab089f23",
+    "message": "Figure.histogram: Add the parameter 'weights' for weighting data (#4890)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-08T16:21:50Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ebc2c8b03799b07237183f4018cf1e98ab089f23",
+    "parents": [
+      "328af4443d9ab02d2dcf85ff44800c2f48a83f00"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_histogram_weights.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "328af4443d9ab02d2dcf85ff44800c2f48a83f00",
+    "message": "Remove unused legacy CSS styles (#4943)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-08T04:04:59Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/328af4443d9ab02d2dcf85ff44800c2f48a83f00",
+    "parents": [
+      "a7f16148cda4715125316ac93f896b6e53d4cf58"
+    ],
+    "files": [
+      {
+        "filename": "doc/_static/style.css",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a7f16148cda4715125316ac93f896b6e53d4cf58",
+    "message": "Figure.histogram: Improve parameters 'distribution' and 'distribution_pen' to draw distribution curves (#4894)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-07T12:56:59Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a7f16148cda4715125316ac93f896b6e53d4cf58",
+    "parents": [
+      "6436b32de1968a3576eaa7f03ff195fc3ab9def5"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "6436b32de1968a3576eaa7f03ff195fc3ab9def5",
+    "message": "Figure.text: Add an inline example (#4937)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-10-05T22:02:11Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/6436b32de1968a3576eaa7f03ff195fc3ab9def5",
+    "parents": [
+      "7975ff4a33b7ac9995250bc2736bbde66d3a805a"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/text.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7975ff4a33b7ac9995250bc2736bbde66d3a805a",
+    "message": "Figure.subplot: Add an inline example (#4938)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-04T11:36:42Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7975ff4a33b7ac9995250bc2736bbde66d3a805a",
+    "parents": [
+      "cf6b5cb82c3199b44b43ca98be9ccd8f6cb6e1fb"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/subplot.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "cf6b5cb82c3199b44b43ca98be9ccd8f6cb6e1fb",
+    "message": "Figure.plot3d: Add an inline example (#4933)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-04T06:12:15Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/cf6b5cb82c3199b44b43ca98be9ccd8f6cb6e1fb",
+    "parents": [
+      "7aff106e58f8cec5fc28a7066b29e68d00fa8cfc"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/plot3d.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7aff106e58f8cec5fc28a7066b29e68d00fa8cfc",
+    "message": "Figure.wiggle: Add an inline example (#4936)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-10-04T06:08:24Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7aff106e58f8cec5fc28a7066b29e68d00fa8cfc",
+    "parents": [
+      "c6f84df9120cb16ef423f879e95f27c24e4b4a42"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/wiggle.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c6f84df9120cb16ef423f879e95f27c24e4b4a42",
+    "message": "Figure.meca: Add an inline example (#4929)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-04T06:04:17Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c6f84df9120cb16ef423f879e95f27c24e4b4a42",
+    "parents": [
+      "4a511a98941e78d4b30325de92f6736db71fc90b"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/meca.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4a511a98941e78d4b30325de92f6736db71fc90b",
+    "message": "Figure.legend: Add an inline example (#4930)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-04T06:03:45Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4a511a98941e78d4b30325de92f6736db71fc90b",
+    "parents": [
+      "cf6775e2fdc21ace2a4997b4b9b6e64e48b93c1c"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/legend.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "cf6775e2fdc21ace2a4997b4b9b6e64e48b93c1c",
+    "message": "Figure.plot: Add an inline example (#4932)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-04T06:01:21Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/cf6775e2fdc21ace2a4997b4b9b6e64e48b93c1c",
+    "parents": [
+      "8484adab8401944cd2ee4418cec271f7e9f5c392"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/plot.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "8484adab8401944cd2ee4418cec271f7e9f5c392",
+    "message": "Figuer.ternary: Add an inline example (#4931)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-03T16:38:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/8484adab8401944cd2ee4418cec271f7e9f5c392",
+    "parents": [
+      "fda2e45669157453815af08764e70bf0a7adba16"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/ternary.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "fda2e45669157453815af08764e70bf0a7adba16",
+    "message": "Figure.contour: Add an inline example (#4934)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-03T16:07:59Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/fda2e45669157453815af08764e70bf0a7adba16",
+    "parents": [
+      "3fd34d1afd9efd92d44848e9d320badb7c3ef1b1"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/contour.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3fd34d1afd9efd92d44848e9d320badb7c3ef1b1",
+    "message": "Figure.tilemap: Add two inline examples (#4928)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-03T02:09:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3fd34d1afd9efd92d44848e9d320badb7c3ef1b1",
+    "parents": [
+      "ffef51f9a0783c7eaf27d3d76a8f7924fef3429d"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/tilemap.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ffef51f9a0783c7eaf27d3d76a8f7924fef3429d",
+    "message": "Figure.histogram: Add parameters to annote bars and deprecate parameter 'annotate' (#4895)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-02T12:51:21Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ffef51f9a0783c7eaf27d3d76a8f7924fef3429d",
+    "parents": [
+      "efe4cff38f13c72dd987a6aeac38aab24faf8da6"
+    ],
+    "files": [
+      {
+        "filename": "examples/tutorials/advanced/cartesian_histograms.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "efe4cff38f13c72dd987a6aeac38aab24faf8da6",
+    "message": "CI: Bump to macos-15 in the GMT Legacy Tests workflow (#4927)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-10-02T06:27:00Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/efe4cff38f13c72dd987a6aeac38aab24faf8da6",
+    "parents": [
+      "de9163e65218d060217d90a9977b21cad7e7d897"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "de9163e65218d060217d90a9977b21cad7e7d897",
+    "message": "Build(deps): Bump https://github.com/zizmorcore/zizmor-pre-commit from v1.30.0 to 1.30.1 (#4926)\n\nBuild(deps): Bump https://github.com/zizmorcore/zizmor-pre-commit\n\nBumps [https://github.com/zizmorcore/zizmor-pre-commit](https://github.com/zizmorcore/zizmor-pre-commit) from v1.30.0 to 1.30.1.\n- [Release notes](https://github.com/zizmorcore/zizmor-pre-commit/releases)\n- [Commits](https://github.com/zizmorcore/zizmor-pre-commit/compare/v1.30.0...v1.30.1)\n\n---\nupdated-dependencies:\n- dependency-name: https://github.com/zizmorcore/zizmor-pre-commit\n  dependency-version: 1.30.1\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-10-02T00:03:44Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/de9163e65218d060217d90a9977b21cad7e7d897",
+    "parents": [
+      "d7e755045efd190b61ff9e9b0f6a716da8d5d56d"
+    ],
+    "files": [
+      {
+        "filename": ".pre-commit-config.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "d7e755045efd190b61ff9e9b0f6a716da8d5d56d",
+    "message": "Build(deps): Bump codecov/codecov-action from 7.1.0 to 7.1.1 (#4925)\n\nBumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 7.1.0 to 7.1.1.\n- [Release notes](https://github.com/codecov/codecov-action/releases)\n- [Changelog](https://github.com/codecov/codecov-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codecov/codecov-action/compare/0b35c9ecc4f0529d0eb674914510c22f85b196b4...303a32d7a59b442fa8d48b6a1cc6825c09c847a5)\n\n---\nupdated-dependencies:\n- dependency-name: codecov/codecov-action\n  dependency-version: 7.1.1\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-09-30T04:19:06Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/d7e755045efd190b61ff9e9b0f6a716da8d5d56d",
+    "parents": [
+      "09d52e0d007849919e3e5c126deb7f84f8ffedd2"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "09d52e0d007849919e3e5c126deb7f84f8ffedd2",
+    "message": "DOC: Update example for testing installation and semi-transparency to account for GMT 6.7.0 bug (#4924)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-09-29T11:45:44Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/09d52e0d007849919e3e5c126deb7f84f8ffedd2",
+    "parents": [
+      "73dc1b9a45ed4818df358f3b44ce312ce49aabb1"
+    ],
+    "files": [
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "73dc1b9a45ed4818df358f3b44ce312ce49aabb1",
+    "message": "fmt_docstring: Split common docstrings into COMMON_PARAMETERS and COMMON_DOCSTRINGS (#4918)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T23:22:20Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/73dc1b9a45ed4818df358f3b44ce312ce49aabb1",
+    "parents": [
+      "010b2a4e19d67ce351eab3207c683447aae9c6cd"
+    ],
+    "files": [
+      {
+        "filename": "doc/contributing.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/helpers/decorators.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "010b2a4e19d67ce351eab3207c683447aae9c6cd",
+    "message": "DOC: Lay out the team member cards in rows in the PDF documentation (#4922)\n\n* DOC: Lay out the team member cards in rows in the PDF documentation\n\nThe LaTeX builder ignores the sphinx-design grid layout, so each profile picture\nin the \"PyGMT Team\" page is scaled to the full text width and takes a whole page.\nAdd the \"team-grid\" class to the team grids and lay out their cards in rows of\nfive small cards in the LaTeX output.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n* Left alignment\n\n---------\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T22:57:53Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/010b2a4e19d67ce351eab3207c683447aae9c6cd",
+    "parents": [
+      "e319827f90cbcf4c70f65b55aaa09a2f86902a72"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/team.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "e319827f90cbcf4c70f65b55aaa09a2f86902a72",
+    "message": "DOC: Show \"Release X.Y.Z\" instead of \"Revision vX.Y.Z\" in the footer for releases (#4920)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T13:28:10Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/e319827f90cbcf4c70f65b55aaa09a2f86902a72",
+    "parents": [
+      "f8fabcc4926ab292e6cfbea3e3bf1e8848fde5b1"
+    ],
+    "files": [
+      {
+        "filename": "doc/_templates/footer.html",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "f8fabcc4926ab292e6cfbea3e3bf1e8848fde5b1",
+    "message": "Figure.solar: Improve docstrings and add type hints for terminator_datetime (#4915)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T13:27:43Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/f8fabcc4926ab292e6cfbea3e3bf1e8848fde5b1",
+    "parents": [
+      "98fa85a1efee31fdac3ee01475c9c42f10bc18c8"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/embellishments/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/_typing.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "98fa85a1efee31fdac3ee01475c9c42f10bc18c8",
+    "message": "DOC: Remove emojis from the PDF documentation (#4921)\n\nThe default XeLaTeX fonts don't cover emojis, so they're shown as blanks in the\nPDF documentation. Remove emojis from the doctrees when building with the LaTeX\nbuilder.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T13:27:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/98fa85a1efee31fdac3ee01475c9c42f10bc18c8",
+    "parents": [
+      "d8cd10f718c32b64fac32acda9b61ed53be9f2fe"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "d8cd10f718c32b64fac32acda9b61ed53be9f2fe",
+    "message": "Figure.solar: Fix the bug that terminator datetime doesn't support fractional timezone offsets (#4916)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-28T03:32:33Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/d8cd10f718c32b64fac32acda9b61ed53be9f2fe",
+    "parents": [
+      "b68a8f32d5a3a70bf2bade1a47c09a43123fd522"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_solar_terminator_datetime_timezone.png",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_solar.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "b68a8f32d5a3a70bf2bade1a47c09a43123fd522",
+    "message": "DOC/ecosystem: Improve the intro and simplify the description of dependencies in the ecosystem (#4911)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-27T04:34:18Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/b68a8f32d5a3a70bf2bade1a47c09a43123fd522",
+    "parents": [
+      "32612cf5944de35cb112c3fc7a60f4ba8cb97fb5"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/ecosystem.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "32612cf5944de35cb112c3fc7a60f4ba8cb97fb5",
+    "message": "pygmt.show_versions: Simplify the parsing of __commit__ (#4919)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-25T00:12:01Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/32612cf5944de35cb112c3fc7a60f4ba8cb97fb5",
+    "parents": [
+      "32fbfbc43d1e1630c224674589d03d0f3a15e104"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/_show_versions.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "32fbfbc43d1e1630c224674589d03d0f3a15e104",
+    "message": "Make the PDF and zipped HTML documentation more visible\n\n- Copy the PDF and zipped HTML files to the HTML folder for releases too,\n  not only for the dev version\n- Add an \"Offline documentation\" section to the sidebar linking to them\n- Fix the double slash in html_baseurl\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-23T15:37:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/32fbfbc43d1e1630c224674589d03d0f3a15e104",
+    "parents": [
+      "8f83ec9ab10744aba4e77a6c0f4b148ebca936c3"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/_templates/layout.html",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "8f83ec9ab10744aba4e77a6c0f4b148ebca936c3",
+    "message": "Bump to setuptools>=10.0.04 to allow fetching on shallow clone and remove fecth-depth setting from workflows (#4909)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-23T05:47:44Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/8f83ec9ab10744aba4e77a6c0f4b148ebca936c3",
+    "parents": [
+      "779a43a151c033463d404c4c037ee3188c324d57"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pyproject.toml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "779a43a151c033463d404c4c037ee3188c324d57",
+    "message": "DOC/team: Shorten the introduction and move role descriptions into their sections (#4908)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-23T02:20:25Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/779a43a151c033463d404c4c037ee3188c324d57",
+    "parents": [
+      "9032c22f9e06cfdd1734ed084f296d5986a93412"
+    ],
+    "files": [
+      {
+        "filename": "doc/team.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "9032c22f9e06cfdd1734ed084f296d5986a93412",
+    "message": "Build(deps): Bump codecov/codecov-action from 7.0.0 to 7.1.0 (#4913)\n\nBumps [codecov/codecov-action](https://github.com/codecov/codecov-action) from 7.0.0 to 7.1.0.\n- [Release notes](https://github.com/codecov/codecov-action/releases)\n- [Changelog](https://github.com/codecov/codecov-action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codecov/codecov-action/compare/fb8b3582c8e4def4969c97caa2f19720cb33a72f...0b35c9ecc4f0529d0eb674914510c22f85b196b4)\n\n---\nupdated-dependencies:\n- dependency-name: codecov/codecov-action\n  dependency-version: 7.1.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-09-22T23:05:49Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/9032c22f9e06cfdd1734ed084f296d5986a93412",
+    "parents": [
+      "74bdc048f9b90e72dd5d14ae4009ec92d0408adc"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "74bdc048f9b90e72dd5d14ae4009ec92d0408adc",
+    "message": "DOC/changes: Use a comma-separated list for contributors to save vertical space (#4906)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-22T12:28:10Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/74bdc048f9b90e72dd5d14ae4009ec92d0408adc",
+    "parents": [
+      "08b73f0fb09255948474a0ed75a4bf9361306eae"
+    ],
+    "files": [
+      {
+        "filename": ".github/release-drafter.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/changes.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/maintenance.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "08b73f0fb09255948474a0ed75a4bf9361306eae",
+    "message": "DOC: Add Pattern to the type hints of fill-related parameters (#4902)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-22T12:25:22Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/08b73f0fb09255948474a0ed75a4bf9361306eae",
+    "parents": [
+      "c13e8c99b3622818b417dba72cc1858a54fe1e0d"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/symbols/patterns.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/fill_between.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/meca.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/paragraph.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/ternary.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/text.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/wiggle.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c13e8c99b3622818b417dba72cc1858a54fe1e0d",
+    "message": "Bump to setuptools>=80 and setuptools-scm>=9.2 (#4910)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-22T05:26:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c13e8c99b3622818b417dba72cc1858a54fe1e0d",
+    "parents": [
+      "36cea7e31d0242728c46d8c07207294dcec1726d"
+    ],
+    "files": [
+      {
+        "filename": "pyproject.toml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "36cea7e31d0242728c46d8c07207294dcec1726d",
+    "message": "DOC/install: Add an introductory note about the page structure (#4907)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-21T08:56:42Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/36cea7e31d0242728c46d8c07207294dcec1726d",
+    "parents": [
+      "a9c32bb65888c505827440673a0025a559ec03d6"
+    ],
+    "files": [
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a9c32bb65888c505827440673a0025a559ec03d6",
+    "message": "Figure.hlines/Figure.vlines: Add the parameter 'panel' to specify the subplot panel (#4892)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-20T23:37:39Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a9c32bb65888c505827440673a0025a559ec03d6",
+    "parents": [
+      "6987948e054b93f806340557f3e7532f875e727a"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/hlines.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/vlines.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "6987948e054b93f806340557f3e7532f875e727a",
+    "message": "DOC/Figure.histogram: Mention that \"bar_offset\" requires \"bar_width\" (#4901)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-09-17T11:47:46Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/6987948e054b93f806340557f3e7532f875e727a",
+    "parents": [
+      "cc1bf9cb41910dbcd489dfc0a8a23502501c09bc"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "cc1bf9cb41910dbcd489dfc0a8a23502501c09bc",
+    "message": "Figure.histogram: Migrate the parameter 'center' to the new alias system (#4896)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-16T22:29:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/cc1bf9cb41910dbcd489dfc0a8a23502501c09bc",
+    "parents": [
+      "1a89d5f1ffac9602fc90236bc8b379bf4ad564eb"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "1a89d5f1ffac9602fc90236bc8b379bf4ad564eb",
+    "message": "DOC/Figure.histogram: Add inline example (#4897)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-16T13:04:24Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/1a89d5f1ffac9602fc90236bc8b379bf4ad564eb",
+    "parents": [
+      "95d3b40d52592a231ce2b73cf3a861a319339c76"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "95d3b40d52592a231ce2b73cf3a861a319339c76",
+    "message": "Figure.image: Add inline examples (#4893)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-16T09:05:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/95d3b40d52592a231ce2b73cf3a861a319339c76",
+    "parents": [
+      "2b0004e09077f94b099b6e9274613af1411c298e"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/image.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "2b0004e09077f94b099b6e9274613af1411c298e",
+    "message": "Figure.fill_between: Reorder parameters based on docstrings (#4891)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-16T08:56:28Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/2b0004e09077f94b099b6e9274613af1411c298e",
+    "parents": [
+      "672b6904f66a35e38ade12b3069c4c4e37909eb6"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/fill_between.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "672b6904f66a35e38ade12b3069c4c4e37909eb6",
+    "message": "Figure.histogram: Add parameter 'out_range' to handle extreme values and deprecate parameter 'extreme' (#4882)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-15T09:56:33Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/672b6904f66a35e38ade12b3069c4c4e37909eb6",
+    "parents": [
+      "19e882c37b76587f2f658f0fd0b2eaf51110552f"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "19e882c37b76587f2f658f0fd0b2eaf51110552f",
+    "message": "Figure.histogram: Migrate parameter 'stairs' to the new alias system (#4884)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-14T02:58:51Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/19e882c37b76587f2f658f0fd0b2eaf51110552f",
+    "parents": [
+      "e2235ab1008898cdca76a3fff7636d8f6e02efd8"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "e2235ab1008898cdca76a3fff7636d8f6e02efd8",
+    "message": "Figure.histogram: Let parameter 'cumulative' support Pythonic arguments (#4881)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-13T07:40:15Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/e2235ab1008898cdca76a3fff7636d8f6e02efd8",
+    "parents": [
+      "dcf58ba57204d79072e1a16046761b7aa1a61e7a"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "dcf58ba57204d79072e1a16046761b7aa1a61e7a",
+    "message": "DOC: Fix link to style_checks.yaml in Contributors Guide (#4888)\n\nFix link to style_checks.yaml in contributors guide",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-09-10T00:08:13Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/dcf58ba57204d79072e1a16046761b7aa1a61e7a",
+    "parents": [
+      "4794872a2d4965e9ca3b6f2e6d7c2ff9602d1d7d"
+    ],
+    "files": [
+      {
+        "filename": "doc/contributing.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4794872a2d4965e9ca3b6f2e6d7c2ff9602d1d7d",
+    "message": "CI: Bump to Ghostscript 10.08.0 (#4885)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-09T06:49:04Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4794872a2d4965e9ca3b6f2e6d7c2ff9602d1d7d",
+    "parents": [
+      "7b3b0edd45c2b89862e12246b028adccaf1edf3c"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "ci/requirements/docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "environment.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7b3b0edd45c2b89862e12246b028adccaf1edf3c",
+    "message": "SPEC 0: Bump minimum supported version to NumPy 2.2 and xarray 2024.10 (#4883)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-07T22:36:20Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7b3b0edd45c2b89862e12246b028adccaf1edf3c",
+    "parents": [
+      "32ae104fe7a6839c012e5b74a44d87d4f917aa7a"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "environment.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pyproject.toml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "32ae104fe7a6839c012e5b74a44d87d4f917aa7a",
+    "message": "Figure.histogram: Migrate the parameter horizontal to the new alias system (#4880)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-07T08:43:43Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/32ae104fe7a6839c012e5b74a44d87d4f917aa7a",
+    "parents": [
+      "819beac8acffa59b5ade4866d33c7ad7a9feb867"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "819beac8acffa59b5ade4866d33c7ad7a9feb867",
+    "message": "CI: Add a composite action for caching Git LFS objects and saving LFS bandwidth (#4877)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-06T06:16:18Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/819beac8acffa59b5ade4866d33c7ad7a9feb867",
+    "parents": [
+      "8d2e1c0ee9e586235173f6b576a6d0956a99356e"
+    ],
+    "files": [
+      {
+        "filename": ".github/actions/checkout-lfs/action.yml",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/dependabot.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "8d2e1c0ee9e586235173f6b576a6d0956a99356e",
+    "message": "CI: Add a composite action for downloading GMT cache (#4858)\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>\nCo-authored-by: Wei Ji <23487320+weiji14@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-04T11:45:35Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/8d2e1c0ee9e586235173f6b576a6d0956a99356e",
+    "parents": [
+      "cd1ba244a0825d47852552546c99069b603a6709"
+    ],
+    "files": [
+      {
+        "filename": ".github/actions/download-gmt-cache/action.yml",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "cd1ba244a0825d47852552546c99069b603a6709",
+    "message": "CI: Improve the Style Checks workflow to enforce underscores for both files and directories (#4876)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-04T11:35:54Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/cd1ba244a0825d47852552546c99069b603a6709",
+    "parents": [
+      "819012206359f911cdfdc997905c01f8d86ed491"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/contributing.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "819012206359f911cdfdc997905c01f8d86ed491",
+    "message": "Figure.histogram: Migrate the parameters pen/fill to the new alias system (#4878)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-04T10:04:28Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/819012206359f911cdfdc997905c01f8d86ed491",
+    "parents": [
+      "af23a844d28f8a80c553eb201f929f277950d3b5"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "af23a844d28f8a80c553eb201f929f277950d3b5",
+    "message": "Figure.image: Fix docstring for bgcolor/fgcolor and raise exception before warning for bitcolor (#4879)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-04T08:59:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/af23a844d28f8a80c553eb201f929f277950d3b5",
+    "parents": [
+      "4f8709e4542947e3b8ad75a654caae34fc97a456"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/image.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_image.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4f8709e4542947e3b8ad75a654caae34fc97a456",
+    "message": "Figure.image: Add parameter fgcolor/bgcolor/transparent_color and deprecate bitcolor [Will be removed in 0.24.0] (#4872)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-04T06:17:50Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4f8709e4542947e3b8ad75a654caae34fc97a456",
+    "parents": [
+      "f87b1bdd38d5dd9194e60e181bc0372cac8b25ac"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/helpers/caching.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/image.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_image_bgcolor_fgcolor.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_image.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "f87b1bdd38d5dd9194e60e181bc0372cac8b25ac",
+    "message": "Figure.directional_rose: Add parameter 'upright_labels' to force readable labels for rotated projections (#4867)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-03T09:58:18Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/f87b1bdd38d5dd9194e60e181bc0372cac8b25ac",
+    "parents": [
+      "04dfa714e4410b79b18c53e7b89a471d69c7a06b"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/directional_rose.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_directional_rose_upright_labels.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_directional_rose.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "04dfa714e4410b79b18c53e7b89a471d69c7a06b",
+    "message": "pygmt.project: Fix the bug that passing x/y/z is not allowed (#4866)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-02T16:06:16Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/04dfa714e4410b79b18c53e7b89a471d69c7a06b",
+    "parents": [
+      "25cda69ed417252344a9f6ed304db866e78a82e0"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/project.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_project.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "25cda69ed417252344a9f6ed304db866e78a82e0",
+    "message": "Figure.scalebar: Improve docstrings for parameters label_alignment/fancy (#4868)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-02T02:03:42Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/25cda69ed417252344a9f6ed304db866e78a82e0",
+    "parents": [
+      "39090dacb62577b2e24b7c75baa06ec4f3667274"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/scalebar.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "39090dacb62577b2e24b7c75baa06ec4f3667274",
+    "message": "Build(deps): Bump CodSpeedHQ/action from 5.0.3 to 5.2.1 (#4875)\n\nBumps [CodSpeedHQ/action](https://github.com/codspeedhq/action) from 5.0.3 to 5.2.1.\n- [Release notes](https://github.com/codspeedhq/action/releases)\n- [Changelog](https://github.com/CodSpeedHQ/action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codspeedhq/action/compare/4296e51e7041e24dadb86d1d6e8b9320d223dbe8...373d6868929f444bc08d901fd0eb0ad52a8875ea)\n\n---\nupdated-dependencies:\n- dependency-name: CodSpeedHQ/action\n  dependency-version: 5.2.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-09-01T23:49:32Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/39090dacb62577b2e24b7c75baa06ec4f3667274",
+    "parents": [
+      "77ee7c51dc49b925f4432f64c436deba2dd314f7"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "77ee7c51dc49b925f4432f64c436deba2dd314f7",
+    "message": "Fix test_figure_savefig_geotiff due to package updates (#4874)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-09-01T09:56:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/77ee7c51dc49b925f4432f64c436deba2dd314f7",
+    "parents": [
+      "327a0156c982f0b316d5799918ac2e5855b2711e"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/tests/test_figure.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "327a0156c982f0b316d5799918ac2e5855b2711e",
+    "message": "Build(deps): Bump https://github.com/zizmorcore/zizmor-pre-commit from v1.26.1 to 1.30.0 (#4873)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-31T03:06:27Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/327a0156c982f0b316d5799918ac2e5855b2711e",
+    "parents": [
+      "37c8dbeb81d4ce1052f9ba98420d38b3fc453196"
+    ],
+    "files": [
+      {
+        "filename": ".pre-commit-config.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "37c8dbeb81d4ce1052f9ba98420d38b3fc453196",
+    "message": "Figure.basemap: Improve the docstring for coltypes (#4856)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-27T09:25:21Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/37c8dbeb81d4ce1052f9ba98420d38b3fc453196",
+    "parents": [
+      "b453435c9123fc818676f1760d640e5e7097e5a8"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/basemap.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "b453435c9123fc818676f1760d640e5e7097e5a8",
+    "message": "CI: Use setup-msvc-dev action instead of hardcoding the VS install path on Windows (#4861)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-27T01:19:50Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/b453435c9123fc818676f1760d640e5e7097e5a8",
+    "parents": [
+      "fc2121dcac9e28e09d68d1a3b5d5a5b9dbf11192"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "fc2121dcac9e28e09d68d1a3b5d5a5b9dbf11192",
+    "message": "CI: Bump to mambaforge-26.3 for ReadTheDocs (#4865)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-26T07:29:20Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/fc2121dcac9e28e09d68d1a3b5d5a5b9dbf11192",
+    "parents": [
+      "c6c5dde9c05e5a0e2ec3f0160503753109b62682"
+    ],
+    "files": [
+      {
+        "filename": ".readthedocs.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c6c5dde9c05e5a0e2ec3f0160503753109b62682",
+    "message": "Session.get_libgmt_func: Let restype default to C int type and use None for void (#4859)\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-26T03:52:24Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c6c5dde9c05e5a0e2ec3f0160503753109b62682",
+    "parents": [
+      "a7b8361b4093f5f084dfb05cf76fcbb7cea344ec"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/clib/session.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a7b8361b4093f5f084dfb05cf76fcbb7cea344ec",
+    "message": "Session.get_common: Fix the return values for options B/J/U/g/n/p/s and improve option checking (#4862)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-26T03:13:16Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a7b8361b4093f5f084dfb05cf76fcbb7cea344ec",
+    "parents": [
+      "c532533f6b010233685361ed6812596a8981b85e"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/clib/session.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c532533f6b010233685361ed6812596a8981b85e",
+    "message": "Session.inquire_virtualfile: Raise GMTCLibError if invalid virtualfile name is passed (#4863)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-26T03:12:35Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c532533f6b010233685361ed6812596a8981b85e",
+    "parents": [
+      "dd177ae99ca8926cc3a07ecf35ca6f1f6211cba2"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/clib/session.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "dd177ae99ca8926cc3a07ecf35ca6f1f6211cba2",
+    "message": "Add a comment to .gitattributes explaining the Git LFS rule (#4857)\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-26T01:45:17Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/dd177ae99ca8926cc3a07ecf35ca6f1f6211cba2",
+    "parents": [
+      "ce8e646879076701330453708ec9e0aa431b66eb"
+    ],
+    "files": [
+      {
+        "filename": ".gitattributes",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ce8e646879076701330453708ec9e0aa431b66eb",
+    "message": "Build(deps): Bump pypa/gh-action-pypi-publish from 1.14.1 to 1.14.2 (#4864)\n\nBumps [pypa/gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish) from 1.14.1 to 1.14.2.\n- [Release notes](https://github.com/pypa/gh-action-pypi-publish/releases)\n- [Commits](https://github.com/pypa/gh-action-pypi-publish/compare/ba38be9e461d3875417946c167d0b5f3d385a247...dc37677b2e1c63e2034f94d8a5b11f265b73ba33)\n\n---\nupdated-dependencies:\n- dependency-name: pypa/gh-action-pypi-publish\n  dependency-version: 1.14.2\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-25T22:55:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ce8e646879076701330453708ec9e0aa431b66eb",
+    "parents": [
+      "bd8a377046dd6e93c6a8e1956d9c3cd54d4c5b30"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "bd8a377046dd6e93c6a8e1956d9c3cd54d4c5b30",
+    "message": "Sort the alias lists in docstrings alphabetically (#4855)\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-25T02:39:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/bd8a377046dd6e93c6a8e1956d9c3cd54d4c5b30",
+    "parents": [
+      "6f49e84bf54b59e08550bc10495649b20add985b"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/choropleth.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grd2cpt.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/legend.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/makecpt.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/project.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/solar.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/sph2grd.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "6f49e84bf54b59e08550bc10495649b20add985b",
+    "message": "CI: Cache Tectonic packages in the Docs workflow (#4848)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-23T14:05:43Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/6f49e84bf54b59e08550bc10495649b20add985b",
+    "parents": [
+      "7360fb1c9b2f5587a27d87511c8e437b637bc05d"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7360fb1c9b2f5587a27d87511c8e437b637bc05d",
+    "message": "Migrate the 'coltypes' (-f) parameter to the new alias system (#4850)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-23T12:41:18Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7360fb1c9b2f5587a27d87511c8e437b637bc05d",
+    "parents": [
+      "4d547f46ed939e0dcc5777108a8aee14abfe717b"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/alias.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/helpers/decorators.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/basemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/blockm.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/contour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grd2xyz.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcontour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcut.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdfill.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdfilter.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdgradient.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdimage.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdinfo.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdpaste.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdsample.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdtrack.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/info.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/nearneighbor.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/plot.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/plot3d.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/project.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/select.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/surface.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/text.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/triangulate.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/wiggle.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/xyz2grd.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4d547f46ed939e0dcc5777108a8aee14abfe717b",
+    "message": "Standardize figure/map/plot terminology in codes and docs [Part 2] (#4847)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-23T11:45:50Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4d547f46ed939e0dcc5777108a8aee14abfe717b",
+    "parents": [
+      "bf0263141fbb94ee3f70f411cbf1495123816761"
+    ],
+    "files": [
+      {
+        "filename": "doc/techref/justification_codes.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/embellishments/gmt_logo.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/images/cross_section.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/images/image.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/gallery/lines/envelope.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/intro/01_first_figure.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/projections/cyl/cyl_oblique_mercator.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/projections/nongeo/cartesian_logarithmic.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/projections/nongeo/cartesian_power.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/cartesian_histograms.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/configuration.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/earth_relief.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/advanced/subplots.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "examples/tutorials/basics/regions.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdcontour.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/ternary.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/text.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "bf0263141fbb94ee3f70f411cbf1495123816761",
+    "message": "CI: Fix release-drafter version resolution and credit new contributors (#4846)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-23T01:14:33Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/bf0263141fbb94ee3f70f411cbf1495123816761",
+    "parents": [
+      "b26ebcdb200f239c4792dd2349593ff1878aa9b7"
+    ],
+    "files": [
+      {
+        "filename": ".github/release-drafter.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "b26ebcdb200f239c4792dd2349593ff1878aa9b7",
+    "message": "Exclude .gitattributes from MANIFEST.in (#4849)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-22T18:51:32Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/b26ebcdb200f239c4792dd2349593ff1878aa9b7",
+    "parents": [
+      "137401c568d570569d248dddb817a98e8d3e20f7"
+    ],
+    "files": [
+      {
+        "filename": "MANIFEST.in",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "137401c568d570569d248dddb817a98e8d3e20f7",
+    "message": "Follow Semantic Versioning and remove the leading v from version string (#4838)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-22T06:28:58Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/137401c568d570569d248dddb817a98e8d3e20f7",
+    "parents": [
+      "4364484240ba35eb91f448ab6956e46e4bf84678"
+    ],
+    "files": [
+      {
+        "filename": ".github/ISSUE_TEMPLATE/4-release_checklist.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/maintenance.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/_show_versions.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/clib/session.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/datasets/tile_map.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/figure.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/helpers/decorators.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/basemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/coast.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdsample.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/subplot.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/tilemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_timestamp.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4364484240ba35eb91f448ab6956e46e4bf84678",
+    "message": "Fix the required sphinx-gallery version in doc/conf.py (#4845)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-21T14:17:12Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4364484240ba35eb91f448ab6956e46e4bf84678",
+    "parents": [
+      "2ec6943fd6d24f9507e4f77b78d714b3b34f132f"
+    ],
+    "files": [
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "2ec6943fd6d24f9507e4f77b78d714b3b34f132f",
+    "message": "DOC: Add notes for first-time contributors in CONTRIBUTING.md (#4823)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-21T09:37:39Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/2ec6943fd6d24f9507e4f77b78d714b3b34f132f",
+    "parents": [
+      "f6df63fa838cf0c05bc01878d01cd2fe81649c6c"
+    ],
+    "files": [
+      {
+        "filename": "CONTRIBUTING.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "f6df63fa838cf0c05bc01878d01cd2fe81649c6c",
+    "message": "DOC: Fix typos in presentations.md (#4844)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-21T09:37:11Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/f6df63fa838cf0c05bc01878d01cd2fe81649c6c",
+    "parents": [
+      "3f6e16a5d504a7bb9e8d825c15e136b2e11bba93"
+    ],
+    "files": [
+      {
+        "filename": "doc/presentations.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3f6e16a5d504a7bb9e8d825c15e136b2e11bba93",
+    "message": "Build(deps): Bump CodSpeedHQ/action from 5.0.2 to 5.0.3 (#4843)\n\nBumps [CodSpeedHQ/action](https://github.com/codspeedhq/action) from 5.0.2 to 5.0.3.\n- [Release notes](https://github.com/codspeedhq/action/releases)\n- [Changelog](https://github.com/CodSpeedHQ/action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codspeedhq/action/compare/0ca9cbbf4623b599a6c3ed4fc8a922942705d9f1...4296e51e7041e24dadb86d1d6e8b9320d223dbe8)\n\n---\nupdated-dependencies:\n- dependency-name: CodSpeedHQ/action\n  dependency-version: 5.0.3\n  dependency-type: direct:production\n  update-type: version-update:semver-patch\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-19T01:52:08Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3f6e16a5d504a7bb9e8d825c15e136b2e11bba93",
+    "parents": [
+      "59b585be19987d03bb337b94234c11e4190b5e14"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "59b585be19987d03bb337b94234c11e4190b5e14",
+    "message": "Build(deps): Bump mamba-org/setup-micromamba from 3.1.0 to 3.2.1 (#4842)\n\nBumps [mamba-org/setup-micromamba](https://github.com/mamba-org/setup-micromamba) from 3.1.0 to 3.2.1.\n- [Release notes](https://github.com/mamba-org/setup-micromamba/releases)\n- [Commits](https://github.com/mamba-org/setup-micromamba/compare/ce51e99f4bb8a82ab7158c4dc59ef4634c59c4f9...f457c30a868e4760d3a6fcea5f25dc655b8edf39)\n\n---\nupdated-dependencies:\n- dependency-name: mamba-org/setup-micromamba\n  dependency-version: 3.2.1\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-19T01:51:44Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/59b585be19987d03bb337b94234c11e4190b5e14",
+    "parents": [
+      "11ac2f20fe6d2033527355c0be6bb0ddd6310bc0"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "11ac2f20fe6d2033527355c0be6bb0ddd6310bc0",
+    "message": "CI: Exclude URL to OSM tiles in docs (#4841)\n\nExclude url to osm tiles in docs",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-18T01:45:37Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/11ac2f20fe6d2033527355c0be6bb0ddd6310bc0",
+    "parents": [
+      "47138b1f070d1a9681a4a7544d5dabc41c71d17f"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/check-links.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "47138b1f070d1a9681a4a7544d5dabc41c71d17f",
+    "message": "Figure.coast/pygmt.grdlandmask/pygmt.select: Migrate the 'area_thresh' parameter to the new Alias System (#4822)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T13:21:09Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/47138b1f070d1a9681a4a7544d5dabc41c71d17f",
+    "parents": [
+      "442454a88629daad34486ad238678b9de27e1bb1"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/helpers/decorators.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/coast.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/grdlandmask.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/select.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "442454a88629daad34486ad238678b9de27e1bb1",
+    "message": "pygmt.load_dataarray: Remove the deprecated function [Deprecated since v0.16.0] (#4837)",
+    "author_login": "yogirajh007",
+    "author_name": "Yogiraj",
+    "date": "2026-08-14T10:06:01Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/442454a88629daad34486ad238678b9de27e1bb1",
+    "parents": [
+      "56821470a91ebf524773170fc3e8e045f70d57ca"
+    ],
+    "files": [
+      {
+        "filename": "doc/api/index.rst",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/__init__.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/io.py",
+        "status": "removed",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_io.py",
+        "status": "removed",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "56821470a91ebf524773170fc3e8e045f70d57ca",
+    "message": "pygmt.grdfill: Remove the deprecated '*fill' parameters [Deprecated since 0.18.0] (#4836)",
+    "author_login": "floze-the-genius",
+    "author_name": "Floze",
+    "date": "2026-08-14T09:38:43Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/56821470a91ebf524773170fc3e8e045f70d57ca",
+    "parents": [
+      "974f24d076741fcc88df7d692cea5e654104efcb"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/grdfill.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "974f24d076741fcc88df7d692cea5e654104efcb",
+    "message": "Figure.velo: Remove deprecated parameter 'uncertaintyfill' [Deprecated since 0.18.0] (#4835)",
+    "author_login": "yousizaitianqiong",
+    "author_name": "yousizaitianqiong",
+    "date": "2026-08-14T08:47:22Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/974f24d076741fcc88df7d692cea5e654104efcb",
+    "parents": [
+      "7e9b383e75de3ff9a777ab8d8ec8834f2da94256"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/velo.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7e9b383e75de3ff9a777ab8d8ec8834f2da94256",
+    "message": "pygmt.grdlandmask: Remove the deprecated parameters 'maskvalue'/'bordervalues' [Deprecated since 0.18.0] (#4833)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T08:05:36Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7e9b383e75de3ff9a777ab8d8ec8834f2da94256",
+    "parents": [
+      "c761b3848d14683ef2c5ea01b21ccb5a83e3fc64"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/grdlandmask.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c761b3848d14683ef2c5ea01b21ccb5a83e3fc64",
+    "message": "pygmt.x2sys_cross: Remove the deprecated parameter 'trackvalues' [Deprecated since 0.18.0] (#4834)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T08:05:17Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c761b3848d14683ef2c5ea01b21ccb5a83e3fc64",
+    "parents": [
+      "668e733bcf5831a4cf1d6eb65b09de8799104d22"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/x2sys_cross.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "668e733bcf5831a4cf1d6eb65b09de8799104d22",
+    "message": "pygmt.surface: Remove the deprecated parameter 'maxradius' [Deprecated since 0.18.0] (#4832)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T07:55:32Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/668e733bcf5831a4cf1d6eb65b09de8799104d22",
+    "parents": [
+      "a66612986ac0b754caea58849ef2f3eb907ba833"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/surface.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a66612986ac0b754caea58849ef2f3eb907ba833",
+    "message": "Figure.wiggle: Remove the deprecated parameters 'fillpositive'/'fillnegative' [Deprecated since 0.18.0] (#4831)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T07:44:03Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a66612986ac0b754caea58849ef2f3eb907ba833",
+    "parents": [
+      "8c009719ea7b3cda29a039b971a64fc64203db5d"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/wiggle.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "8c009719ea7b3cda29a039b971a64fc64203db5d",
+    "message": " Figure.grdview: Remove the deprecated parameters '*pen'/'drapegrid' (#4830)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T07:30:56Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/8c009719ea7b3cda29a039b971a64fc64203db5d",
+    "parents": [
+      "834cb514014d13f66ba9868ad8ccb715001a008d"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "834cb514014d13f66ba9868ad8ccb715001a008d",
+    "message": "Figure.meca: Remove the deprecated parameters 'label'/'*fill' (#4829)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T06:24:44Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/834cb514014d13f66ba9868ad8ccb715001a008d",
+    "parents": [
+      "420da07f2c54c25b12e34a8ea038e29536d1b1b5"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/meca.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "420da07f2c54c25b12e34a8ea038e29536d1b1b5",
+    "message": "Session.virtualfile_in: Remove the deprecated parameter 'required_z'/'required_data'/'extra_arrays' [Deprecated since 0.16.0] (#4828)\n\n* Session.virtualfile_in: Remove the deprecated parameter 'required_z' [Deprecated since 0.16.0]\n* Session.virtualfile_in: Remove the deprecated parameter 'extra_arrays' [Deprecated since 0.16.0]\n* Session.virtualfile_in: Remove the deprecated parameter 'required_data' [Deprecated since 0.16.0]",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T05:30:52Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/420da07f2c54c25b12e34a8ea038e29536d1b1b5",
+    "parents": [
+      "876492e0d58b454139764e10978827f9537f2291"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/clib/session.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_clib_virtualfile_in.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "876492e0d58b454139764e10978827f9537f2291",
+    "message": "Figure.histogram: Remove the deprecated parameter barwidth [Deprecated since 0.18.0] (#4827)",
+    "author_login": "Johnkothapalli",
+    "author_name": "Kothapalli Johnvaraprasad",
+    "date": "2026-08-14T04:41:09Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/876492e0d58b454139764e10978827f9537f2291",
+    "parents": [
+      "ce0638b10336b6edc7e74f4056ea549f105d2ff6"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/histogram.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ce0638b10336b6edc7e74f4056ea549f105d2ff6",
+    "message": "pygmt.select: Remove the deprecated parameters mask/gridmask [Deprecated since 0.18.0] (#4825)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-14T04:19:37Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ce0638b10336b6edc7e74f4056ea549f105d2ff6",
+    "parents": [
+      "c62ec5efb8ed2a699434c3351dd90f50bd3ccfe9"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/select.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "c62ec5efb8ed2a699434c3351dd90f50bd3ccfe9",
+    "message": "Figure.inset: Remove deprecated parameter margin [Deprecated since 0.18.0] (#4826)",
+    "author_login": "floze-the-genius",
+    "author_name": "Floze",
+    "date": "2026-08-14T04:19:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/c62ec5efb8ed2a699434c3351dd90f50bd3ccfe9",
+    "parents": [
+      "1d2d4f2c8431c85b2eb3ce7c1fe4337f48bb8421"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/inset.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "1d2d4f2c8431c85b2eb3ce7c1fe4337f48bb8421",
+    "message": "DOC: List all dependencies in the installation guides (#4807)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-13T13:26:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/1d2d4f2c8431c85b2eb3ce7c1fe4337f48bb8421",
+    "parents": [
+      "9173db23d96274d294bcd5055a69c4d537d36347"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "9173db23d96274d294bcd5055a69c4d537d36347",
+    "message": "Add blockmedian and surface gallery example (#4771)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "Aayush7788",
+    "author_name": "Aayush kotadia",
+    "date": "2026-08-12T15:10:19Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/9173db23d96274d294bcd5055a69c4d537d36347",
+    "parents": [
+      "ca4c52db4393d2946fa6b318950a96daca6b3983"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/images/gridding_with_surface.py",
+        "status": "added",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "ca4c52db4393d2946fa6b318950a96daca6b3983",
+    "message": "BREAKING: Figure.coast: Add parameter river_lakes for setting fills of river-lakes separately (#4376)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-12T12:11:29Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/ca4c52db4393d2946fa6b318950a96daca6b3983",
+    "parents": [
+      "007ab98b3363b46aadc4d0a7f9fffd358e451a49"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/coast.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "007ab98b3363b46aadc4d0a7f9fffd358e451a49",
+    "message": "Figure.tilemap/pygmt.datasets.tile_map: Set User-Agent to avoid blocked access to OSM tile server (#4816)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-12T08:55:59Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/007ab98b3363b46aadc4d0a7f9fffd358e451a49",
+    "parents": [
+      "5410e16909d37bec1da2a71b6f362c0b01f621eb"
+    ],
+    "files": [
+      {
+        "filename": "examples/gallery/maps/tilemaps.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/datasets/tile_map.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/tilemap.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "5410e16909d37bec1da2a71b6f362c0b01f621eb",
+    "message": "Build(deps): Bump CodSpeedHQ/action from 4.18.5 to 5.0.2 (#4818)\n\nBumps [CodSpeedHQ/action](https://github.com/codspeedhq/action) from 4.18.5 to 5.0.2.\n- [Release notes](https://github.com/codspeedhq/action/releases)\n- [Changelog](https://github.com/CodSpeedHQ/action/blob/main/CHANGELOG.md)\n- [Commits](https://github.com/codspeedhq/action/compare/f99becdce5e5d51fd556489ebef684f4ecfd6286...0ca9cbbf4623b599a6c3ed4fc8a922942705d9f1)\n\n---\nupdated-dependencies:\n- dependency-name: CodSpeedHQ/action\n  dependency-version: 5.0.2\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-12T05:13:22Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/5410e16909d37bec1da2a71b6f362c0b01f621eb",
+    "parents": [
+      "59f96a4513b5c0ba47b1ef37691d5c5ad5c86eb5"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "59f96a4513b5c0ba47b1ef37691d5c5ad5c86eb5",
+    "message": "Build(deps): Bump mamba-org/setup-micromamba from 3.0.0 to 3.1.0 (#4817)\n\nBumps [mamba-org/setup-micromamba](https://github.com/mamba-org/setup-micromamba) from 3.0.0 to 3.1.0.\n- [Release notes](https://github.com/mamba-org/setup-micromamba/releases)\n- [Commits](https://github.com/mamba-org/setup-micromamba/compare/d7c9bd84e824b79d2af72a2d4196c7f4300d3476...ce51e99f4bb8a82ab7158c4dc59ef4634c59c4f9)\n\n---\nupdated-dependencies:\n- dependency-name: mamba-org/setup-micromamba\n  dependency-version: 3.1.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-12T05:12:34Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/59f96a4513b5c0ba47b1ef37691d5c5ad5c86eb5",
+    "parents": [
+      "18075ed85a854932c5b33dceffbf842311ce1625"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_dev.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "18075ed85a854932c5b33dceffbf842311ce1625",
+    "message": "Update the issue template for bumping GMT version (#4806)\n\nCo-authored-by: Yvonne Fröhlich <94163266+yvonnefroehlich@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-11T08:52:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/18075ed85a854932c5b33dceffbf842311ce1625",
+    "parents": [
+      "1c6346bf2a55fd3db519d3ca2b066644dd6e750c"
+    ],
+    "files": [
+      {
+        "filename": ".github/ISSUE_TEMPLATE/5-bump_gmt_checklist.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "1c6346bf2a55fd3db519d3ca2b066644dd6e750c",
+    "message": "Update the URL links to the GMT documentation (#4814)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-11T08:38:51Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/1c6346bf2a55fd3db519d3ca2b066644dd6e750c",
+    "parents": [
+      "a0fd47979b1fd0c5dcea9e66f206b4a219ef3679"
+    ],
+    "files": [
+      {
+        "filename": "examples/projections/cyl/cyl_universal_transverse_mercator.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/encodings.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/params/pattern.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/params/position.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/logo.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/nearneighbor.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_text.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a0fd47979b1fd0c5dcea9e66f206b4a219ef3679",
+    "message": "DOC/website: Use card layout for presentations (#4805)\n\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-10T09:29:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a0fd47979b1fd0c5dcea9e66f206b4a219ef3679",
+    "parents": [
+      "9505baa5de1dfa487dc53bc118f1a08770735fad"
+    ],
+    "files": [
+      {
+        "filename": "doc/presentations.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "9505baa5de1dfa487dc53bc118f1a08770735fad",
+    "message": "README: Use absolute URLs for PyGMT logos (#4809)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-09T10:52:45Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/9505baa5de1dfa487dc53bc118f1a08770735fad",
+    "parents": [
+      "f8d331fd91f6327f9b9fb14521b25d79c0f53269"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "f8d331fd91f6327f9b9fb14521b25d79c0f53269",
+    "message": "CI: Unpin tectonic for PDF building (#4606)\n\nThis reverts commit ebb6ea28fa511ad4e111828e436df6ba38db3b99.",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-09T06:35:39Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/f8d331fd91f6327f9b9fb14521b25d79c0f53269",
+    "parents": [
+      "74c8fd1aa5f13033dad00c080ff1636fbc7299c9"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "environment.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "74c8fd1aa5f13033dad00c080ff1636fbc7299c9",
+    "message": "Figure.grdview: Fix the default z-plane with GMT 6.7.0 (#4804)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-09T04:33:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/74c8fd1aa5f13033dad00c080ff1636fbc7299c9",
+    "parents": [
+      "39716784be37d7a6396a2c749eebf07225b9e220"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/grdview.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "39716784be37d7a6396a2c749eebf07225b9e220",
+    "message": "Fix the baseline image for test_text_position_offset_with_line.png (#4803)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-09T04:33:32Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/39716784be37d7a6396a2c749eebf07225b9e220",
+    "parents": [
+      "820f5d95c8db4c63850878ce7ad5c347b1525c39"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/tests/baseline/test_text_position_offset_with_line.png",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/baseline/test_text_position_offset_with_line_legacy.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_text.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "820f5d95c8db4c63850878ce7ad5c347b1525c39",
+    "message": "README: Reorganize structure (#4800)\n\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-08T18:07:36Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/820f5d95c8db4c63850878ce7ad5c347b1525c39",
+    "parents": [
+      "63c7de7b8c42782d9eca927a12f40c133d257d20"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "63c7de7b8c42782d9eca927a12f40c133d257d20",
+    "message": "CI: Bump the GMT version in CI to 6.7.0 (#4802)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-08T12:40:07Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/63c7de7b8c42782d9eca927a12f40c133d257d20",
+    "parents": [
+      "d17d4f66c0181d83b836b5c1edd427d9745413fd"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/benchmarks.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/cache_data.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_doctests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/ci_tests_legacy.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "ci/requirements/docs.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/install.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "environment.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "d17d4f66c0181d83b836b5c1edd427d9745413fd",
+    "message": "DOC/website: Reorganize subsection \"Overview\" (#4786)\n\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-08T10:41:41Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/d17d4f66c0181d83b836b5c1edd427d9745413fd",
+    "parents": [
+      "8e8abc050b10185eb9111e7b2cd4021afc484f12"
+    ],
+    "files": [
+      {
+        "filename": "doc/overview.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "8e8abc050b10185eb9111e7b2cd4021afc484f12",
+    "message": "DOC/website: Redesign landing page of PyGMT website (#4762)\n\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-07T10:48:26Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/8e8abc050b10185eb9111e7b2cd4021afc484f12",
+    "parents": [
+      "4f53f6d8c89f1f429ba9f8d7effcf886b4b6511f"
+    ],
+    "files": [
+      {
+        "filename": "doc/_static/style.css",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4f53f6d8c89f1f429ba9f8d7effcf886b4b6511f",
+    "message": "DOC/website: Adjust order of subsections under 'Getting Help' in sidebar (#4799)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-06T16:12:27Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4f53f6d8c89f1f429ba9f8d7effcf886b4b6511f",
+    "parents": [
+      "2f3dda98bc8847a38e4d331adceee7adecd3e0cf"
+    ],
+    "files": [
+      {
+        "filename": "doc/_templates/layout.html",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/conf.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "2f3dda98bc8847a38e4d331adceee7adecd3e0cf",
+    "message": "Build(deps): Bump release-drafter/release-drafter from 7.5.1 to 7.7.0 (#4797)\n\nBumps [release-drafter/release-drafter](https://github.com/release-drafter/release-drafter) from 7.5.1 to 7.7.0.\n- [Release notes](https://github.com/release-drafter/release-drafter/releases)\n- [Commits](https://github.com/release-drafter/release-drafter/compare/4d75298e00d9e34c483e5ff8c68d0ea1c1940c1e...34d80673e067bdc0c24568d3af899c216adcfaa9)\n\n---\nupdated-dependencies:\n- dependency-name: release-drafter/release-drafter\n  dependency-version: 7.6.0\n  dependency-type: direct:production\n  update-type: version-update:semver-minor\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-06T05:31:15Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/2f3dda98bc8847a38e4d331adceee7adecd3e0cf",
+    "parents": [
+      "d6eaf3f6d332198cc181d80c4de65797bfbca131"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/release-drafter.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "d6eaf3f6d332198cc181d80c4de65797bfbca131",
+    "message": "Build(deps): Bump actions/setup-python from 6.3.0 to 7.0.0 (#4798)\n\n* Build(deps): Bump actions/setup-python from 6.3.0 to 7.0.0\n\nBumps [actions/setup-python](https://github.com/actions/setup-python) from 6.3.0 to 7.0.0.\n- [Release notes](https://github.com/actions/setup-python/releases)\n- [Commits](https://github.com/actions/setup-python/compare/ece7cb06caefa5fff74198d8649806c4678c61a1...5fda3b95a4ea91299a34e894583c3862153e4b97)\n\n---\nupdated-dependencies:\n- dependency-name: actions/setup-python\n  dependency-version: 7.0.0\n  dependency-type: direct:production\n  update-type: version-update:semver-major\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\n\n* Revert \"Build(deps): Bump actions/setup-python from 6.0.0 to 6.1.0 (#4237)\"\n\nThis reverts commit c43e91abb6b7016ada099feaeab0415bbce49592.\n\n* Fix the revert changes in type_checks.yml\n\n---------\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "dependabot[bot]",
+    "author_name": "dependabot[bot]",
+    "date": "2026-08-06T05:15:02Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/d6eaf3f6d332198cc181d80c4de65797bfbca131",
+    "parents": [
+      "bd09f36e8d130627df6f0134c648c0df75987751"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/format-command.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/publish-to-pypi.yml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/style_checks.yaml",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": ".github/workflows/type_checks.yml",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "bd09f36e8d130627df6f0134c648c0df75987751",
+    "message": "README: Use hmtl instead of blank line for line break within badges (#4795)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-03T11:21:55Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/bd09f36e8d130627df6f0134c648c0df75987751",
+    "parents": [
+      "6921dd390f7e0bf8aadb3d5d22a7c1bf86b5fb14"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "6921dd390f7e0bf8aadb3d5d22a7c1bf86b5fb14",
+    "message": "DOC/README: Reorganize the Contributing section (#4793)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-03T08:25:05Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/6921dd390f7e0bf8aadb3d5d22a7c1bf86b5fb14",
+    "parents": [
+      "4dd2184b9d271552e9573aed12a5c577b33ac402"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "4dd2184b9d271552e9573aed12a5c577b33ac402",
+    "message": "DOC: Do not use theme in filename of PyGMT logo image for the light theme (#4794)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-03T07:36:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4dd2184b9d271552e9573aed12a5c577b33ac402",
+    "parents": [
+      "9d5a9044ed5f421ed3ee49595d7f08abfa0bfeff"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/_static/pygmtlogo.png",
+        "status": "renamed",
+        "previous_filename": "doc/_static/pygmtlogo_light.png"
+      },
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/pygmtlogo.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "9d5a9044ed5f421ed3ee49595d7f08abfa0bfeff",
+    "message": "DOC/website: Move citiation information from README to separate file and subsection \"citing\" (#4784)\n\nCo-authored-by: Dongdong Tian <seisman.info@gmail.com>",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-03T01:07:29Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/9d5a9044ed5f421ed3ee49595d7f08abfa0bfeff",
+    "parents": [
+      "beaf996a131f63143a7109f9351a25104dfa84a2"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/citing.md",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/team.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/dimfilter.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/surface.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/x2sys_cross.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/x2sys_init.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "beaf996a131f63143a7109f9351a25104dfa84a2",
+    "message": "DOC: Fix filename in link to PyGMT logo image file (#4792)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-02T14:45:13Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/beaf996a131f63143a7109f9351a25104dfa84a2",
+    "parents": [
+      "2b89980364683039926126727362e7263e8fb38f"
+    ],
+    "files": [
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/src/pygmtlogo.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "2b89980364683039926126727362e7263e8fb38f",
+    "message": "DOC: Allow light-dark theme change of PyGMT logo in README (#4778)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-08-02T03:56:27Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/2b89980364683039926126727362e7263e8fb38f",
+    "parents": [
+      "4d441b3073fdc8ba022b0d9b50bf9a0768b90733"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/_static/pygmtlogo_dark.png",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/_static/pygmtlogo_light.png",
+        "status": "renamed",
+        "previous_filename": "doc/_static/pygmtlogo.png"
+      }
+    ]
+  },
+  {
+    "sha": "4d441b3073fdc8ba022b0d9b50bf9a0768b90733",
+    "message": "DOC: Fix typos in the text tutorial (#4789)",
+    "author_login": "willschlitzer",
+    "author_name": "Will Schlitzer",
+    "date": "2026-08-02T02:47:19Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/4d441b3073fdc8ba022b0d9b50bf9a0768b90733",
+    "parents": [
+      "305435457ea63fa77a7bca9ac4e1056d4ff726f0"
+    ],
+    "files": [
+      {
+        "filename": "examples/tutorials/basics/text.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "305435457ea63fa77a7bca9ac4e1056d4ff726f0",
+    "message": "DOC/README: Cleanup and standardize badge colors in groups (#4776)",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-08-01T16:31:39Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/305435457ea63fa77a7bca9ac4e1056d4ff726f0",
+    "parents": [
+      "a5154d4b44c12e6fd8396c5589f08769b89065f5"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "a5154d4b44c12e6fd8396c5589f08769b89065f5",
+    "message": "pygmt.blockmean/blockmedian/blockmode: Add the center parameter (-C) (#4780)",
+    "author_login": "Aayush7788",
+    "author_name": "Aayush kotadia",
+    "date": "2026-08-01T12:39:36Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/a5154d4b44c12e6fd8396c5589f08769b89065f5",
+    "parents": [
+      "dfb06c47a2d15d40e0ab05582a19165c0b3b0847"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/blockm.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "dfb06c47a2d15d40e0ab05582a19165c0b3b0847",
+    "message": "Change 'import importlib' to 'import importlib.util' in test files. (#4787)",
+    "author_login": "willschlitzer",
+    "author_name": "Will Schlitzer",
+    "date": "2026-08-01T01:02:14Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/dfb06c47a2d15d40e0ab05582a19165c0b3b0847",
+    "parents": [
+      "99df45428a3ddafac9b4488b5c79427b414e3040"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/tests/test_clib_vectors_to_arrays.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_figure.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_tilemap.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_xarray_accessor.py",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "pygmt/tests/test_xarray_backend.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "99df45428a3ddafac9b4488b5c79427b414e3040",
+    "message": "Remove duplicate line in paragraph.py (#4788)",
+    "author_login": "willschlitzer",
+    "author_name": "Will Schlitzer",
+    "date": "2026-07-31T23:27:24Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/99df45428a3ddafac9b4488b5c79427b414e3040",
+    "parents": [
+      "7620be6091b50ed6f767e696aebbe180bd33171c"
+    ],
+    "files": [
+      {
+        "filename": "pygmt/src/paragraph.py",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "7620be6091b50ed6f767e696aebbe180bd33171c",
+    "message": "DOC/website: Update \"External resources\" (adjust card layout, sort tutorials by date) (#4785)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-07-31T09:22:30Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/7620be6091b50ed6f767e696aebbe180bd33171c",
+    "parents": [
+      "3d4cfb19140efd64cae02a8e3210ff324ec13495"
+    ],
+    "files": [
+      {
+        "filename": "doc/external_resources.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3d4cfb19140efd64cae02a8e3210ff324ec13495",
+    "message": "DOC: Document the supported array dtypes (#3582)\n\nCo-authored-by: Wei Ji <23487320+weiji14@users.noreply.github.com>",
+    "author_login": "seisman",
+    "author_name": "Dongdong Tian",
+    "date": "2026-07-31T04:23:47Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3d4cfb19140efd64cae02a8e3210ff324ec13495",
+    "parents": [
+      "55dd7a92a4bf19f4d65f5e2d3eabfbf5cdfc6f3e"
+    ],
+    "files": [
+      {
+        "filename": "doc/techref/array_dtypes.md",
+        "status": "added",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/techref/index.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "55dd7a92a4bf19f4d65f5e2d3eabfbf5cdfc6f3e",
+    "message": "DOC/website: Move \"presentations\" to seperate file and subsection (#4782)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-07-30T16:05:28Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/55dd7a92a4bf19f4d65f5e2d3eabfbf5cdfc6f3e",
+    "parents": [
+      "3cff706e53e8afdad0c30d9d8d447f921450ee79"
+    ],
+    "files": [
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/overview.md",
+        "status": "modified",
+        "previous_filename": null
+      },
+      {
+        "filename": "doc/presentations.md",
+        "status": "added",
+        "previous_filename": null
+      }
+    ]
+  },
+  {
+    "sha": "3cff706e53e8afdad0c30d9d8d447f921450ee79",
+    "message": "DOC/website: Add section \"Project Overview\" and move \"overview\" and \"ecosystem\" (#4781)",
+    "author_login": "yvonnefroehlich",
+    "author_name": "Yvonne Fröhlich",
+    "date": "2026-07-30T11:57:22Z",
+    "url": "https://github.com/GenericMappingTools/pygmt/commit/3cff706e53e8afdad0c30d9d8d447f921450ee79",
+    "parents": [
+      "6ded98a1ce1d62662df9d18bb64ec60f22a9dd2a"
+    ],
+    "files": [
+      {
+        "filename": "doc/index.md",
+        "status": "modified",
+        "previous_filename": null
+      }
+    ]
+  }
+]
