@@ -359,7 +359,7 @@ def answer(g, path, mode, routed=None):
                      "needs_human_verification": ["Confirm the original reason no longer applies", "Confirm the code is still present and still used"]}
         elif resolved_before:
             lid = [ev.link(l) for l in resolved_before]
-            ans.append({"text": f"{', '.join(_label(l) for l in resolved_before)} was already resolved before this change was made, so the change was made with that fix in existence. Whether the conditions behind it still apply cannot be determined from the ingested history.", "evidence_ids": lid, "label": "unknown"})
+            ans.append({"text": f"{', '.join(_label(l) for l in resolved_before)} was already resolved before this change was made. A fix merged upstream does not show that the workaround is unnecessary, for example if older versions of the dependency are still supported. Whether the conditions behind it still apply cannot be determined from the ingested history.", "evidence_ids": lid, "label": "unknown"})
         else:
             ans.append({"text": "Nothing in the ingested history says the original reason has been resolved or removed.", "evidence_ids": [], "label": "unknown"})
         return _finish(g, build_envelope(mode=mode, routed_mode=routed, item=item, answer=ans, decision=dec, drift_alert=drift), ev)
