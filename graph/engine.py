@@ -195,19 +195,27 @@ def analyse(g, path):
 
 
 def drift_signal(g, a):
-    """'reason resolved AFTER the change': a linked issue closed / upstream PR merged later than the decision commit."""
+    """'reason resolved AFTER the change': the decision's own text says workaround/stop-gap, and an
+    UPSTREAM (other-repo) PR/issue linked from it was merged/closed later than the decision commit."""
+    import re
     if not a["decision"]:
         return None
     dc, dlinks = a["decision"]
+    own_text = (dc.get("message") or "") + " " + " ".join(
+        ((l["rec"].get("title") or "") + " " + (l["rec"].get("body") or ""))
+        for l in dlinks if l["kind"] == "pull" and not l.get("external"))
+    if not re.search(r"work[\s-]?around|temporar(?:y|ily)|\bhack\b|\bfallback\b|\buntil\b|\bsuppress", own_text, re.I):
+        return None
     d0 = _parse(dc["date"])
     later = []
     for l in dlinks:
+        if not l.get("external"):
+            continue
         r = l["rec"]
-        when = r.get("merged_at") if (l["kind"] == "pull" and l["external"]) else (r.get("closed_at") if l["kind"] == "issue" else None)
+        when = r.get("merged_at") if l["kind"] == "pull" else r.get("closed_at")
         if when and d0 and _parse(when) and _parse(when) > d0:
             later.append(l)
     return later or None
-
 
 # ---------- evidence helpers ----------
 class Ev:
