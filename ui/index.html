@@ -370,6 +370,7 @@ async function renderResult() {
 function clearBelowRepo() {
   overviewBox.textContent = ''; itemsBox.textContent = ''; nav.textContent = ''; app.textContent = '';
   state = { repo: null, item: null, mode: 'why' };
+  banner.className = ''; banner.textContent = '';
 }
 
 async function analyze() {
@@ -384,6 +385,14 @@ async function analyze() {
     const ov = await api('/repos/' + repo + '/overview');
     const it = await api('/repos/' + repo + '/items');
     state.repo = repo;
+        const meta = REPOS.find(r => r.repo.toLowerCase() === repo.toLowerCase());
+    if (meta && meta.synthetic) {
+      banner.className = 'banner';
+      banner.textContent = 'Synthetic sample data. Not a real repository.';
+    } else {
+      banner.className = '';
+      banner.textContent = '';
+    }
     showOverview(ov, repo);
     showItems(Array.isArray(it) ? it : (it.items || []));
   } catch (err) {
@@ -402,10 +411,7 @@ async function load() {
   document.getElementById('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
   try {
     REPOS = await loadRepos();
-    if (REPOS.some(r => r.synthetic)) {
-      banner.className = 'banner';
-      banner.textContent = 'Synthetic sample data. Not a real repository.';
-    }
+   
   } catch (err) {
     app.textContent = 'Could not reach the API at ' + API_BASE + '. Is uvicorn running? (' + err.message + ')';
   }
