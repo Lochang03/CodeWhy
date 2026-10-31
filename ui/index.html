@@ -26,6 +26,7 @@
   .stat .num { font-size:28px; font-weight:700; }
   .stat .name { font-weight:600; }
   .item { display:block; width:100%; text-align:left; margin-bottom:8px; }
+  .item-list { max-height: 260px; overflow-y: auto; padding-right: 4px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
   .badge { display:inline-block; font-size:12px; font-weight:600; padding:1px 8px; border-radius:999px; border:1.5px solid currentColor; margin-right:8px; }
   .verified { color:var(--verified); }
@@ -312,17 +313,26 @@ function showOverview(ov, repoName) {
 }
 
 function showItems(items) {
+  const prev = itemsBox.querySelector('.item-list');
+  const top = prev ? prev.scrollTop : 0;      // keep scroll position when the list redraws
   itemsBox.textContent = '';
   heading(itemsBox, 'Pick a file or decision');
+  const list = el('div', 'item-list');
   items.forEach(it => {
     const b = el('button', 'item');
     b.setAttribute('aria-pressed', state.item && state.item.id === it.id ? 'true' : 'false');
     b.appendChild(el('span', 'badge plain', it.state));
     b.appendChild(el('span', null, it.label));
     b.appendChild(el('span', 'muted', '  ' + it.evidence_count + ' evidence'));
-    b.addEventListener('click', () => { state.item = it; state.mode = 'why'; showItems(items); renderResult(); });
-    itemsBox.appendChild(b);
+    b.addEventListener('click', () => {
+      state.item = it; state.mode = 'why';
+      showItems(items);
+      renderResult().then(() => nav.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    });
+    list.appendChild(b);
   });
+  itemsBox.appendChild(list);
+  list.scrollTop = top;
 }
 
 function buildNav() {
