@@ -1,49 +1,80 @@
 # CodeWhy
 
-Understand why code exists, and detect when its original reasoning may no longer hold.
-HackFront India, PS T1.1 "Why The Code Is Like This". Team Parallel Minds.
+Understand why code exists, and say so honestly when the evidence is not there.
 
 > Other tools tell you what the code says. CodeWhy tells you why it's that way, whether that reason still applies, and when it can't tell, it says so.
 
+HackFront India | PS T1.1 "Why The Code Is Like This" | Team Parallel Minds: Lochan G, Nidhishree U Kulkarni
+
 ## What it does
-Paste a GitHub repo, pick a file, and ask one of four questions:
-- **Why is it like this?** The reason, with links to the commits, PRs and issues behind it.
-- **How did it change?** A timeline of the original change, discussion and later changes.
-- **Is it still needed?** A drift check that flags "Possibly outdated. Verify."
-- **Code DNA:** origin, key decisions and files that change together.
 
-Every statement is labeled **verified** (explicit in the source), **inferred** (our heuristic), **unknown**, or **heuristic**. When there is no evidence, CodeWhy says exactly: "Insufficient evidence in the repository."
+For a cached public repository, CodeWhy answers "why is this file the way it is?" with links to the commits, pull requests and issues behind it. Every link is labelled **verified** (explicit in the source: a PR's merge commit, a reference written in PR text, a git revert message) or **inferred**. Each answer carries a confidence level computed from evidence counts, and when no evidence exists it answers "Insufficient evidence in the repository."
 
-Demo repo: `GenericMappingTools/pygmt` (150 commits, 80 PRs, 80 issues, fetched 2026-10-26), plus `GenericMappingTools/gmt` for an upstream PR. A synthetic sample (`sample/synthetic`) is also included and is always labeled as synthetic.
+In the web UI you paste a repository, pick a file, and ask one of four questions (the modes of the `/ask` endpoint):
 
-## Setup (backend)
-```bash
-python -m venv .venv
-.venv\Scripts\activate        # Windows   (Mac/Linux: source .venv/bin/activate)
-pip install -r requirements.txt
-python -m pytest              # should pass
-uvicorn api.main:app --reload --port 8000   # http://localhost:8000/docs
+- **Why is it like this?** (`why`): the reason, with the commits, PRs and issues behind it.
+- **How did it change?** (`history`): a timeline from the original change to later ones.
+- **Is it still needed?** (`still_needed`): checks whether the original reason may no longer apply. It never claims a workaround can be removed.
+- **Code DNA** (`dna`): origin, key decisions and files that change together.
+
+Labels used throughout: **verified**, **inferred**, **heuristic**, **unknown**. The UI shows a "Synthetic sample data" banner only for the synthetic sample repository, never for real repositories.
+
+## Demo data
+
+- GenericMappingTools/pygmt: 150 commits, 80 pull requests and 80 issues (most recent items, fetched 2026-10-26).
+- Items fetched by number: commit 8859ca3, PR #3367, issue #3205, and the upstream PR GenericMappingTools/gmt#8461.
+- The demo case (the UnicodeDecodeError workaround in `pygmt/clib/session.py`) was found by manual research and fetched by number. The engine did not discover it.
+- `sample/synthetic` is a synthetic repository used only for UI development. It is always labelled as synthetic.
+
+## Verified on real data
+
+- `why` for `pygmt/clib/session.py`: commit 8859ca3 -> PR #3367 -> issue #3205 -> upstream GMT PR #8461. All four links are labelled verified, confidence is high, and each link was opened by hand and matched.
+- `still_needed` for the same file: raises no drift alert and states that an upstream fix does not show the workaround is unnecessary. Whether the original conditions still apply is reported as unknown.
+- `history` for `CITATION.cff`: change #4957 and its revert #4958 appear in order as verified commits.
+- A file with one commit and no linked PR (`.readthedocs.yaml`) returns the commit and states that the reason is not recorded.
+- An item with no history returns "Insufficient evidence in the repository", empty evidence and confidence "none".
+- 52 automated tests pass.
+
+## How it works
+
+GitHub REST API -> cached JSON in `data/raw/` -> in-memory graph (commit-to-PR links, cross-repo references, file renames, reverts) -> FastAPI (`/repos`, `/repos/{owner}/{repo}/overview`, `/repos/{owner}/{repo}/items`, `POST /ask`) -> web UI in `ui/`.
+
+Answers are assembled from graph facts by rule-based code, and every sentence cites evidence ids. No language model is called, and nothing is predicted ("Based on repo history only, not a prediction."). Neo4j is not used; the graph is built in memory from the cached JSON.
+
+## Run it
+
+Backend:
 ```
-The demo data is already in `data/raw/`, so no GitHub token is needed to run the demo. A token is only needed to fetch new repos.
+python -m venv .venv
+.venv\Scripts\activate          (Mac/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+python -m pytest
+uvicorn api.main:app --port 8000
+```
+On Windows, if `uvicorn` is not found, use `py -m uvicorn api.main:app --port 8000`.
 
-## Run the UI
+UI:
 1. Keep the API running on port 8000.
 2. In VS Code, right-click `ui/index.html` and choose "Open with Live Server" (extension by Ritwick Dey). Double-clicking the file does not work.
-3. Type `GenericMappingTools/pygmt` and click Analyze.
-4. Pick a file such as `pygmt/clib/session.py` and try the four buttons.
+3. Type `GenericMappingTools/pygmt` (or click it under "Examples") and press Analyze.
+4. Pick `pygmt/clib/session.py` and try the four tabs.
 
-## Download a repo's history (bounded slice)
-```bash
-python -m ingest.fetch_repo owner/repo --max-commits 150 --max-prs 80 --max-issues 80
-```
+API docs: http://localhost:8000/docs
+Test item: repo `GenericMappingTools/pygmt`, item id `file:pygmt/clib/session.py`.
 
-## Limitations (kept honest)
-- Only a bounded, most-recent slice of a repo is ingested (see `meta.json` for exact limits), not the full history.
-- Works only on repositories fetched in advance. Others show "Not cached".
-- Design docs, wikis and chat are not ingested.
-- File contents are not ingested. Whether a workaround is still present in the code is NOT checked by the tool; we verified it by hand for the demo case.
-- "Possibly outdated. Verify." is a heuristic, not a verified fact. An upstream fix alone does not prove a workaround is unnecessary.
+The demo runs from the committed cache and needs no token. To fetch another repository, create a GitHub token, put it in `.env` (see `.env.example`) and run `python -m ingest.fetch_repo owner/repo`.
+
+## Limitations
+
+- Bounded slice: only the most recent items of a repository are ingested. Only cached repositories can be queried; there is no live "analyze any URL". Counts cover only the fetched slice.
+- Not every commit can be linked to a pull request: in the demo data, 57 of 151 commits are tied to one. Files without a link answer with what exists and say the reason is not recorded.
+- Whether a workaround is still present in the current code is not checked, and design documents, wikis and chat are not ingested.
+-- Drift detection is a heuristic. It flags an item only when the decision's own text uses stop-gap wording (workaround, temporary, fallback and similar) and a linked upstream pull request or issue was resolved after the decision. An earlier, looser version flagged 15 of 180 items, mostly ordinary fixes that closed their own issues; we reviewed two alerts, found the rule too loose and tightened it. It now raises no alert on the pygmt demo data. It has only been tested on a constructed case, so its precision on real repositories is unknown.
 - "Inferred" links (for example, files changed together) are a heuristic, not explicit references.
-- Answers are built only from facts in the graph, each citing evidence IDs. No LLM, no predictions.
-- Counts and answers cover only the fetched slice of history.
-- `data/sample/` and `ui/sample.json` contain synthetic data and are labeled as such.
+- Rename detection exists, but the demo slice only contains a swap of two logo files.
+- Revert detection is verified on one case (CITATION.cff, a metadata file, not code).
+- Files in `data/sample/` and `ui/sample.json` are synthetic and marked as such. They are not findings from a real repository.
+
+## Next steps
+
+Ingest releases and design documents, check whether workarounds are still present in the code, load the graph into Neo4j, and add a real drift case.
