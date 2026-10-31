@@ -5,29 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CodeWhy</title>
 <style>
-  :root { --bg:#ffffff; --text:#1a1a1a; --muted:#666; --card:#f5f6f8; --line:#d9dce1; --accent:#2457d6;
-          --verified:#1e7a3c; --inferred:#9a6200; --unknown:#666; --heuristic:#6b3fa0; --warn:#b3261e; }
+  :root { --bg:#f6f7fd; --text:#151a33; --muted:#5b6486; --card:#ffffff; --line:#dde1f0; --accent:#4457e8; --accent2:#0891b2;
+          --verified:#15803d; --inferred:#a16207; --unknown:#5b6486; --heuristic:#7e3fc4; --warn:#be123c; --glow:rgba(68,87,232,.14); }
   @media (prefers-color-scheme: dark) {
-    :root { --bg:#14161a; --text:#e8e8e8; --muted:#9aa0a6; --card:#1e2127; --line:#343942; --accent:#6c93ff;
-            --verified:#5ac47c; --inferred:#e0a93b; --unknown:#9aa0a6; --heuristic:#b794f4; --warn:#f28b82; }
+    :root { --bg:#0b1020; --text:#e8ecf8; --muted:#97a1c0; --card:#131a30; --line:#26304f; --accent:#7c8cff; --accent2:#22d3ee;
+            --verified:#4ade80; --inferred:#fbbf24; --unknown:#9aa3bd; --heuristic:#c084fc; --warn:#fb7185; --glow:rgba(124,140,255,.16); }
   }
-  body { margin:0; background:var(--bg); color:var(--text); font-family:system-ui, Arial, sans-serif; line-height:1.5; }
-  main { max-width:760px; margin:0 auto; padding:24px 16px 60px; }
-  h1 { margin:0 0 8px; font-size:26px; }
-  h2 { font-size:16px; margin:24px 0 8px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
-  .banner { background:#fff3cd; color:#5c4400; border:1px solid #e6cf7a; padding:8px 12px; border-radius:8px; font-size:14px; margin-bottom:16px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:radial-gradient(900px 400px at 50% -80px, var(--glow), transparent), var(--bg); color:var(--text);
+         font-family:system-ui, Segoe UI, Arial, sans-serif; line-height:1.55; }
+  main { max-width:860px; margin:0 auto; padding:20px 16px 60px; }
+  .logo { display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:20px; cursor:pointer; background:none; border:none; color:var(--text); padding:0; }
+  .logo .dot { width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); }
+  .hero { text-align:center; padding:34px 0 8px; }
+  .hero h1 { font-size:clamp(28px,5vw,42px); margin:0 0 10px; line-height:1.15; }
+  .hero h1 span { background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero p { color:var(--muted); max-width:620px; margin:0 auto 22px; font-size:17px; }
+  h2 { font-size:15px; margin:26px 0 10px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .banner { background:#fff3cd; color:#5c4400; border:1px solid #e6cf7a; padding:8px 12px; border-radius:10px; font-size:14px; margin:12px 0; }
+  .repo-box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px; box-shadow:0 8px 30px var(--glow); }
   .row { display:flex; gap:8px; }
-  .row input { flex:1; font:inherit; padding:9px 12px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); }
-  button { font:inherit; padding:8px 14px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
-  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+  .row input { flex:1; min-width:0; font:inherit; padding:12px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--bg); color:var(--text); }
+  .row input:focus { outline:2px solid var(--accent); border-color:transparent; }
+  button { font:inherit; padding:8px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
+  button:hover { border-color:var(--accent); }
+  button.primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); border-color:transparent; color:#fff; font-weight:700; padding:12px 22px; }
   button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; align-items:center; justify-content:center; }
+  .chip { border-radius:999px; font-size:13px; padding:4px 12px; }
+  .grid3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+  .grid4 { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+  .feat .n { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
+  .feat b { display:block; margin-bottom:4px; }
+  .legend .card { display:flex; gap:10px; align-items:flex-start; }
+  .foot { text-align:center; color:var(--muted); font-size:13px; margin-top:34px; }
   .nav { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 16px; }
   .stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:10px; }
-  .stat .num { font-size:28px; font-weight:700; }
+  .stat .num { font-size:28px; font-weight:800; color:var(--accent); }
   .stat .name { font-weight:600; }
   .item { display:block; width:100%; text-align:left; margin-bottom:8px; }
-  .item-list { max-height: 260px; overflow-y: auto; padding-right: 4px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+  .item-list { max-height:260px; overflow-y:auto; padding-right:4px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:10px; }
   .badge { display:inline-block; font-size:12px; font-weight:600; padding:1px 8px; border-radius:999px; border:1.5px solid currentColor; margin-right:8px; }
   .verified { color:var(--verified); }
   .inferred { color:var(--inferred); border-style:dashed; }
@@ -39,23 +57,59 @@
   .abstain { border:2px solid var(--warn); color:var(--warn); font-weight:600; font-size:18px; }
   .drift { border:2px solid var(--heuristic); }
   .drift .title { font-size:18px; font-weight:700; color:var(--heuristic); margin-bottom:6px; }
-  .tl { border-left:3px solid var(--line); margin-left:6px; padding-left:14px; }
+  .tl { border-left:3px solid var(--accent); margin-left:6px; padding-left:14px; }
   .tl .when { font-weight:600; }
   a { color:inherit; }
   ul { padding-left:0; list-style:none; margin:0; }
+  [hidden] { display:none !important; }
 </style>
 </head>
 <body>
 <main>
-  <h1>CodeWhy</h1>
+  <button class="logo" id="home" aria-label="CodeWhy home"><span class="dot"></span>CodeWhy</button>
+
+  <section class="hero" id="hero">
+    <h1>Know <span>why</span> the code is like this.</h1>
+    <p>Other tools tell you what the code says. CodeWhy tells you why it's that way, whether that reason still applies, and when it can't tell, it says so.</p>
+  </section>
+
   <div id="banner"></div>
 
-  <h2>Repository</h2>
-  <div class="row">
-    <input id="repo-input" type="text" placeholder="https://github.com/owner/repo" aria-label="GitHub repository URL">
-    <button id="analyze" class="primary">Analyze</button>
+  <div class="repo-box">
+    <div class="row">
+      <input id="repo-input" type="text" placeholder="Paste a GitHub repo, e.g. GenericMappingTools/pygmt" aria-label="GitHub repository URL">
+      <button id="analyze" class="primary">Analyze</button>
+    </div>
+    <div id="chips" class="chips"></div>
   </div>
   <div id="repo-msg"></div>
+
+  <div id="intro">
+    <h2>How it works</h2>
+    <div class="grid3">
+      <div class="card feat"><div class="n">1</div><b>Read the history</b><span class="muted">CodeWhy reads a repo's commits, pull requests and issues, then links them to files.</span></div>
+      <div class="card feat"><div class="n">2</div><b>Build an evidence graph</b><span class="muted">Only explicit links count as verified, such as "#41", a URL, "fixes" or a revert line. Everything else is labeled.</span></div>
+      <div class="card feat"><div class="n">3</div><b>Answer with sources</b><span class="muted">Every sentence cites evidence you can click. No evidence means no answer.</span></div>
+    </div>
+
+    <h2>Four questions you can ask</h2>
+    <div class="grid4">
+      <div class="card feat"><b>Why is it like this?</b><span class="muted">The reason, with the commits, PRs and issues behind it.</span></div>
+      <div class="card feat"><b>How did it change?</b><span class="muted">A timeline from the original change to later ones.</span></div>
+      <div class="card feat"><b>Is it still needed?</b><span class="muted">A drift check that says "Possibly outdated. Verify."</span></div>
+      <div class="card feat"><b>Code DNA</b><span class="muted">Origin, key decisions and files that change together.</span></div>
+    </div>
+
+    <h2>Honest labels</h2>
+    <div class="grid4 legend">
+      <div class="card"><span class="badge verified">verified</span><span class="muted">Explicit in the source.</span></div>
+      <div class="card"><span class="badge inferred">inferred</span><span class="muted">Our heuristic, not stated.</span></div>
+      <div class="card"><span class="badge heuristic">heuristic</span><span class="muted">A signal to double-check.</span></div>
+      <div class="card"><span class="badge unknown">unknown</span><span class="muted">"Insufficient evidence in the repository."</span></div>
+    </div>
+    <p class="muted" style="text-align:center;margin-top:14px">Based on repo history only, not a prediction. The demo works on repos fetched in advance.</p>
+    <div class="foot">Built for HackFront India · Team Parallel Minds</div>
+  </div>
 
   <div id="overview"></div>
   <div id="items"></div>
@@ -90,6 +144,10 @@ const banner = document.getElementById('banner');
 const repoMsg = document.getElementById('repo-msg');
 const overviewBox = document.getElementById('overview');
 const itemsBox = document.getElementById('items');
+const intro = document.getElementById('intro');
+const hero = document.getElementById('hero');
+const chipsBox = document.getElementById('chips');
+const input = document.getElementById('repo-input');
 let REPOS = [];
 let state = { repo: null, item: null, mode: 'why' };
 
@@ -107,7 +165,7 @@ function badge(label) {
   const l = ['verified', 'inferred', 'unknown', 'heuristic'].includes(label) ? label : 'unknown';
   return el('span', 'badge ' + l, l);
 }
-function refs(ids, byId) {                 // [ev1] [ev2] links
+function refs(ids, byId) {
   const s = el('span', 'refs');
   (ids || []).forEach(id => {
     const ev = byId[id];
@@ -122,14 +180,13 @@ function refs(ids, byId) {                 // [ev1] [ev2] links
   });
   return s;
 }
-// Accepts "https://github.com/owner/repo", "github.com/owner/repo/", "owner/repo", with or without .git
 function parseRepo(text) {
   const m = String(text).trim().replace(/\.git$/, '').replace(/\/+$/, '')
     .match(/^(?:https?:\/\/)?(?:www\.)?(?:github\.com\/)?([\w.-]+)\/([\w.-]+)$/i);
   return m ? m[1] + '/' + m[2] : null;
 }
 
-// ---------- API access (the only place that talks to the backend) ----------
+// ---------- API access ----------
 async function api(path, options) {
   const res = await fetch(API_BASE + path, options);
   if (!res.ok) {
@@ -140,14 +197,11 @@ async function api(path, options) {
   }
   return res.json();
 }
-
 async function loadRepos() {
   const d = await api('/repos');
   return Array.isArray(d) ? d : (d.repos || []);
 }
-
-// the ONE place that gets answers
-async function getAnswer(repo, item, mode) {
+async function getAnswer(repo, item, mode) {   // the ONE place that gets answers
   return api('/ask', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -168,7 +222,7 @@ function showAnswer(r, byId) {
     app.appendChild(card);
   });
 }
-function showConfidence(r) {               // level only; the backend computes the basis
+function showConfidence(r) {
   if (!r.confidence) return;
   section('Confidence');
   app.appendChild(el('div', 'card', 'Level: ' + r.confidence.level));
@@ -314,7 +368,7 @@ function showOverview(ov, repoName) {
 
 function showItems(items) {
   const prev = itemsBox.querySelector('.item-list');
-  const top = prev ? prev.scrollTop : 0;      // keep scroll position when the list redraws
+  const top = prev ? prev.scrollTop : 0;
   itemsBox.textContent = '';
   heading(itemsBox, 'Pick a file or decision');
   const list = el('div', 'item-list');
@@ -353,12 +407,9 @@ async function renderResult() {
   let r = null;
   try { r = await getAnswer(state.repo, state.item, state.mode); }
   catch (err) { app.appendChild(el('div', 'card abstain', 'Could not get an answer. ' + err.message)); return; }
-  if (!r) {
-    app.appendChild(el('div', 'card', 'No answer returned for this item.'));
-    return;
-  }
+  if (!r) { app.appendChild(el('div', 'card', 'No answer returned for this item.')); return; }
   app.appendChild(el('p', 'muted', 'Item: ' + (r.item ? r.item.label : state.item.label)));
-  if (r.status === 'insufficient_evidence') {          // exact message required by the schema
+  if (r.status === 'insufficient_evidence') {
     app.appendChild(el('div', 'card abstain', r.message || 'Insufficient evidence in the repository.'));
     return;
   }
@@ -379,14 +430,22 @@ async function renderResult() {
 
 function clearBelowRepo() {
   overviewBox.textContent = ''; itemsBox.textContent = ''; nav.textContent = ''; app.textContent = '';
-  state = { repo: null, item: null, mode: 'why' };
   banner.className = ''; banner.textContent = '';
+  state = { repo: null, item: null, mode: 'why' };
+}
+
+function goHome() {
+  clearBelowRepo();
+  repoMsg.textContent = '';
+  input.value = '';
+  intro.hidden = false; hero.hidden = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 async function analyze() {
   clearBelowRepo();
   repoMsg.textContent = '';
-  const repo = parseRepo(document.getElementById('repo-input').value);
+  const repo = parseRepo(input.value);
   if (!repo) {
     repoMsg.appendChild(el('div', 'card abstain', 'Please paste a GitHub URL like https://github.com/owner/repo'));
     return;
@@ -395,14 +454,12 @@ async function analyze() {
     const ov = await api('/repos/' + repo + '/overview');
     const it = await api('/repos/' + repo + '/items');
     state.repo = repo;
-        const meta = REPOS.find(r => r.repo.toLowerCase() === repo.toLowerCase());
+    const meta = REPOS.find(r => r.repo.toLowerCase() === repo.toLowerCase());
     if (meta && meta.synthetic) {
       banner.className = 'banner';
       banner.textContent = 'Synthetic sample data. Not a real repository.';
-    } else {
-      banner.className = '';
-      banner.textContent = '';
     }
+    intro.hidden = true; hero.hidden = true;
     showOverview(ov, repo);
     showItems(Array.isArray(it) ? it : (it.items || []));
   } catch (err) {
@@ -416,14 +473,27 @@ async function analyze() {
   }
 }
 
+function buildChips() {
+  chipsBox.textContent = '';
+  const cached = REPOS.filter(r => r.cached);
+  if (!cached.length) return;
+  chipsBox.appendChild(el('span', 'muted', 'Try:'));
+  cached.forEach(r => {
+    const b = el('button', 'chip', r.repo + (r.synthetic ? ' (synthetic)' : ''));
+    b.addEventListener('click', () => { input.value = r.repo; analyze(); });
+    chipsBox.appendChild(b);
+  });
+}
+
 async function load() {
   document.getElementById('analyze').addEventListener('click', analyze);
-  document.getElementById('repo-input').addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
+  document.getElementById('home').addEventListener('click', goHome);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') analyze(); });
   try {
     REPOS = await loadRepos();
-   
+    buildChips();
   } catch (err) {
-    app.textContent = 'Could not reach the API at ' + API_BASE + '. Is uvicorn running? (' + err.message + ')';
+    repoMsg.appendChild(el('div', 'card abstain', 'Could not reach the API at ' + API_BASE + '. Is uvicorn running? (' + err.message + ')'));
   }
 }
 load();
